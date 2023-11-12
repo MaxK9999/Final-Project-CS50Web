@@ -1,0 +1,19 @@
+# IDEAS
+
+- mainpage with most recent blogs in chronological order
+- login/register page for users 
+- page where users can make their own blogs
+- page with "randomized destination" button which shows a random travel destination idea
+     (use API call with any of: "OpenTripMap API", "REST Countries API", "Google Places API")
+- user page which shows their customized profile, all countries that user has visited and a list of all their blogs
+- searchbar functionality through which users can filter or find the specific blogs they are looking for
+- enable comments/ratings on blogs
+- interactive map to visually display locations (mapping libraries include "Leaflet", "Mapbox")
+
+
+
+
+# TIMELINE:
+
+12-11-2023:
+Created backend and frontend folders for REST/React travelblog website
