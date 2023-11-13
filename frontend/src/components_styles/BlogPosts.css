@@ -1,16 +1,20 @@
 .blog-posts {
-    max-width: 800px;
-    height: 2000px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #d6d6d6;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-left: 35vw;
+    display: flex;
+    flex-direction: column;
 }
 
 .blog-posts h1 {
     text-align: center;
     margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .blog-posts ul {
@@ -19,6 +23,7 @@
 }
 
 .blog-posts li {
+    width: 800px;
     margin-bottom: 20px;
     padding: 10px;
     background-color: #fff;
