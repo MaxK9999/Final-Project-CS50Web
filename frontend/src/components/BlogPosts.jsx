@@ -22,7 +22,11 @@ const BlogPosts = () => {
             <h1>Blog Posts</h1>
             <ul>
                 {blogPosts.map((post) => (
-                    <li key={post.id}>{post.title}</li>
+                    <li key={post.id}>
+                        <strong>{post.title}</strong>
+                        <p>{post.content}</p>
+                        <p>{post.created_at}</p>
+                    </li>
                 ))}
             </ul>
         </div>
