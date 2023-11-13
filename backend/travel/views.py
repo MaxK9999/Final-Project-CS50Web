@@ -5,7 +5,7 @@ from .serializers import BlogPostSerializer
 
 # Create your views here.
 class BlogPostViewSet(viewsets.ModelViewSet):
-    queryset = BlogPost.objects.all()
+    queryset = BlogPost.objects.all().order_by('-created_at')
     serializer_class = BlogPostSerializer
     
     

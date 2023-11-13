@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../components_styles/BlogPosts.css";
 import { getBlogPosts } from "../Api";
 
 const BlogPosts = () => {
@@ -7,10 +8,10 @@ const BlogPosts = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await getBlogPosts();
-                setBlogPosts(response.data);
+                const { data } = await getBlogPosts();
+                setBlogPosts(data);
             } catch (error) {
-                console.log('Error fetching blog posts:', error);
+                console.error('Error fetching blog posts:', error);
             }
         };
         fetchData();
@@ -18,7 +19,7 @@ const BlogPosts = () => {
     }, []);
 
     return (
-        <div>
+        <div className="blog-posts">
             <h1>Blog Posts</h1>
             <ul>
                 {blogPosts.map((post) => (
