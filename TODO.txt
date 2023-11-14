@@ -20,3 +20,6 @@ Created backend and frontend folders for REST/React travelblog website
 
 13-11-2023:
 Added BlogPost model and basic backend code.
+Added navbar and general page layout in frontend code.
+
+14-11-2023:
