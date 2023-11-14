@@ -7,3 +7,5 @@ class BlogPost(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='blog_posts')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    banner_image = models.ImageField(upload_to='blog_post_images/', blank=True, null=True)
+    

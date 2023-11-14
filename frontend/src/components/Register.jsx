@@ -1,6 +1,5 @@
 import React from "react";
 import "../components_styles/Register.css";
-import { Link } from "react-router-dom";
 
 const Register = () => {
     return (

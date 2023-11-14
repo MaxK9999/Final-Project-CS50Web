@@ -9,6 +9,7 @@ const BlogPosts = () => {
         const fetchData = async () => {
             try {
                 const { data } = await getBlogPosts();
+                console.log(data)
                 setBlogPosts(data);
             } catch (error) {
                 console.error('Error fetching blog posts:', error);
@@ -22,16 +23,21 @@ const BlogPosts = () => {
         <div className="blog-posts">
             <h1>Blog Posts</h1>
             <ul>
-                {blogPosts.map((post) => (
-                    <li key={post.id}>
-                        <strong>{post.title}</strong>
-                        <p>{post.content}</p>
-                        <p>{post.created_at}</p>
-                    </li>
+            {blogPosts.map((post) => (
+                <figure key={post.id} className="snip1577" >
+                    <img src={post.banner_image} alt={post.title} />
+                    <figcaption>
+                    <h3>{post.title}</h3><br/>
+                    <h4>{post.content}</h4>
+                    <br/>
+                    <h4>Created By: {post.author}</h4>
+                    </figcaption>
+                    <a href="#"></a>
+                </figure>
                 ))}
             </ul>
-        </div>
+        </div> 
     );
 };
-
-export default BlogPosts;
+ 
+export default BlogPosts; 
