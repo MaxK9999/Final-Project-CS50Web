@@ -8,6 +8,7 @@
     z-index: 999;
     left: 0;
     transition: left 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    border-right: 1px dashed #272525;
 }
 
 .navbar-closed {
