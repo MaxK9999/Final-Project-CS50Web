@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "../components_styles/Navbar.css";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+    const [isNavbarClosed, setIsNavbarClosed] = useState(false);
+
+    const toggleNavbar = () => {
+        setIsNavbarClosed(!isNavbarClosed);
+    };
+
     return (
-        <div className="navbar">
+        <div className={`navbar ${isNavbarClosed ? "" : "navbar-closed"}`}>
+            <i className={`fa-solid fa-bars toggle-button`} onClick={toggleNavbar}></i>
             <nav>
                 <ul>
                     <li>

@@ -32,12 +32,11 @@ const BlogPosts = () => {
                     <br/>
                     <h4>Created By: {post.author}</h4>
                     </figcaption>
-                    <a href="#"></a>
                 </figure>
                 ))}
             </ul>
         </div> 
-    );
+    ); 
 };
  
 export default BlogPosts; 
