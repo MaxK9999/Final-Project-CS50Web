@@ -4,12 +4,12 @@ import { getBlogPosts } from "../Api";
 
 const BlogPosts = () => {
     const [blogPosts, setBlogPosts] = useState([]);
+    const [searchQuery, setSearchQuery] = useState("");
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data } = await getBlogPosts();
-                console.log(data)
+                const { data } = await getBlogPosts(searchQuery);
                 setBlogPosts(data);
             } catch (error) {
                 console.error('Error fetching blog posts:', error);
@@ -17,7 +17,11 @@ const BlogPosts = () => {
         };
         fetchData();
 
-    }, []);
+    }, [searchQuery]);
+
+    const handleSearch = (event) => {
+        setSearchQuery(event.target.value);
+    };
 
     const heroSection = (
         <div className="hero-section">
@@ -28,11 +32,18 @@ const BlogPosts = () => {
                 Or simply allow yourself some relaxation by checking out our curated collection of exotic destinations!
 
                 <br /><br />
-                Something specific you're looking for? Try your look with the search bar!
-            </p>
+                Something specific you're looking for? Try your luck with the search bar!
+                <br /><br />
 
+                <input 
+                    type="text"
+                    placeholder="Search"
+                    value={searchQuery}
+                    onChange={handleSearch}
+                />
+            </p>
         </div>
-    )
+    );
 
 
     return (
@@ -52,6 +63,10 @@ const BlogPosts = () => {
                         </figure>
                         ))}
                     </ul> 
+
+                    {blogPosts.length === 0 && (
+                    <h3>No blog posts found matching your criteria.</h3>
+                )}
             </div> 
         </section>
     ); 

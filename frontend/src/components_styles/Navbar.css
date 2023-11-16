@@ -17,10 +17,16 @@
 
 .toggle-button {
     position: fixed;
+    font-size: 23px;
     left: 20px;
     top: 20px;
     z-index: 1000; 
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        transform: scale(1.1);
+    }
 }
 
 ul {
