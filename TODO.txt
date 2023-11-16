@@ -28,3 +28,7 @@ Progression with generel aesthetics.
 16-11-2023:
 Adding more changes to Blog Posts page.
 Added searchbar functionality to BlogPost page.
+Modified landing page (added banner video).
+Added more responsiveness.
+Further modifications to styling.
+
