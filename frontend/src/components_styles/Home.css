@@ -1,18 +1,30 @@
-.home {
-    margin-left: 40vw;
-    display: flex;
-    flex-direction: column;
+video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
-.home h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    font-weight: bold;
-    font-size: 40px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    line-height: 1.2;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+.hero-section-home {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font: 2rem 'Montserrat', sans-serif;
+}
+
+.hero-section-home h1 {
+    font-size: 3rem;
+}
+
+@media only screen and (max-width: 1375px) {
+    .hero-section-home {
+        justify-content: flex-start;
+        font: 1rem 'Montserrat', sans-serif;
+    }
 }

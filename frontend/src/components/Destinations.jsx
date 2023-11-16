@@ -1,10 +1,11 @@
 import React from "react";
 import "../components_styles/Destinations.css";
+import Heading from "./Heading";
 
 const Destinations = () => {
     return (
-        <div className="destinations">
-            <h1>Destinations</h1>
+        <div className="heading">
+            <Heading title="Destinations" />
         </div>
     );
 }

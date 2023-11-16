@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../components_styles/BlogPosts.css";
 import { getBlogPosts } from "../Api";
+import Heading from "./Heading";
 
 const BlogPosts = () => {
     const [blogPosts, setBlogPosts] = useState([]);
@@ -25,30 +26,33 @@ const BlogPosts = () => {
 
     const heroSection = (
         <div className="hero-section">
-            <h1>Blog Posts</h1>
-            <p>
-                Embark on a journey of discovery with our captivating blog posts. 
-                From hidden gems to must-visit destinations, find inspiration for your next adventure right here.
-                Or simply allow yourself some relaxation by checking out our curated collection of exotic destinations!
+            <div className="heading">
+                <Heading title="Blog Posts" />
+                <p>
+                    Embark on a journey of discovery with our captivating blog posts. 
+                    From hidden gems to must-visit destinations, find inspiration for your next adventure right here.
+                    Or simply allow yourself some relaxation by checking out our curated collection of exotic destinations!
 
-                <br /><br />
-                Something specific you're looking for? Try your luck with the search bar!
-                <br /><br />
+                    <br /><br />
+                    Something specific you're looking for? Try your luck with the search bar!
+                    <br /><br />
 
-                <input 
-                    type="text"
-                    placeholder="Search"
-                    value={searchQuery}
-                    onChange={handleSearch}
-                />
-            </p>
+                    <input 
+                        type="text"
+                        placeholder="Search"
+                        value={searchQuery}
+                        onChange={handleSearch}
+                    />
+                </p>
+            </div>
         </div>
     );
-
+ 
 
     return (
         <section className="blog-posts-page">
             {heroSection}
+            <br />
             <div className="blog-posts">
                     <ul>
                     {blogPosts.map((post) => (

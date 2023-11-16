@@ -36,24 +36,6 @@ input {
     flex-direction: column;
 }
 
-.blog-posts-page h1 {
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom:  100px;
-    color: #aea8a8;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    font-weight: bold;
-    font-size: 40px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    line-height: 1.2;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-}
-
-.blog-posts-page p {
-  margin-left: 3vw;
-  max-width: 80ch;
-}
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat:200);
 .snip1577 {
