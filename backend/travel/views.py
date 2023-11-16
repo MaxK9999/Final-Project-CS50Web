@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
 from .models import BlogPost
 from .serializers import BlogPostSerializer
 
@@ -7,5 +7,6 @@ from .serializers import BlogPostSerializer
 class BlogPostViewSet(viewsets.ModelViewSet):
     queryset = BlogPost.objects.all().order_by('-created_at')
     serializer_class = BlogPostSerializer
-    
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['title', 'content', 'author__username']
     

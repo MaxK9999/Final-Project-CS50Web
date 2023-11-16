@@ -1,10 +1,11 @@
 import React from "react";
 import "../components_styles/Login.css";
+import Heading from "./Heading";
 
 const Login = () => {
     return (
-        <div className="login">
-            <h1>Login</h1>
+        <div className="heading">
+            <Heading title="Login" />
         </div>
     )
 }

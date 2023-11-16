@@ -13,7 +13,7 @@
 
 
 
-# TIMELINE:
+# GENERAL TIMELINE:
 
 12-11-2023:
 Created backend and frontend folders for REST/React travelblog website
@@ -23,3 +23,8 @@ Added BlogPost model and basic backend code.
 Added navbar and general page layout in frontend code.
 
 14-11-2023:
+Progression with generel aesthetics.
+
+16-11-2023:
+Adding more changes to Blog Posts page.
+Added searchbar functionality to BlogPost page.
