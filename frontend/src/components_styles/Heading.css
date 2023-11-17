@@ -19,5 +19,6 @@
 
 .heading p {
     max-width: 80ch;
+    font-size: 20px;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }

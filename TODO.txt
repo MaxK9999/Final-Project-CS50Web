@@ -32,3 +32,6 @@ Modified landing page (added banner video).
 Added more responsiveness.
 Further modifications to styling.
 
+17-11-2023:
+Modified home screen, added about section and finished hero section.
+Added about section with countries listed.

@@ -56,6 +56,7 @@ const Home = () => {
                 {landingPageImages}
             </div>
             <br />
+            
             <div className="about-us">
                 <h1>About us</h1>
                 <p>
@@ -65,7 +66,7 @@ const Home = () => {
                     <br />
                     So that's why we are here! We have procured this website for you, the likeminded individual who absolutely loves seeing every nook and cranny of the world, and in turn is not afraid to share their stories with the world.
                     <br />
-                    The mastermind behind this team? none other than <strong>Maxim Koltypin</strong>. Let us introduce him below:
+                    The mastermind behind this team? Let us introduce him below:
                     <br />
                     <br />
                     <div className="team">
@@ -74,9 +75,9 @@ const Home = () => {
                                 <strong>Maxim Koltypin</strong> <br />
                             <ul>
                                 <li>Full Stack Developer</li>
-                                <li>Software Engineer</li>
+                                <li>Marine</li>
                                 <li>Travel Enthusiast</li>
-                                <li>Traveler</li>
+                                <li>Loving boyfriend</li>
                             </ul>
                             </p>
                         </div>
@@ -85,7 +86,32 @@ const Home = () => {
                         </div>
                     </div>
                 </p>
+                <p>
+                    Maxim is a 24 year old marine and self taught full stack developer. So far he has already visited many continents and their countries and is planning on visiting many more!
+                    When questioned about what countries were the most memorable for him, his top five would be:
+
+                    <ul className="countries">
+                        <li>Switzerland</li>
+                        <li>Japan</li>
+                        <li>Austria</li>
+                        <li>France</li>
+                        <li>USA</li>
+                    </ul>
+                    <br /><br />
+                    <i>
+                        "Being a massive fan of the outdoors, mountains and nature, Switzerland was an absolute no-brainer. Japan would be a very close second because of it's very rich culture
+                        and history. Everything about Japan just absolutely makes me want to revisit it again someday! <br />
+                        Austria will always and forever be in my heart because I grew up with skiing and what better place to shred some fresh snow than in Austria.
+                        France is in here because I absolutely love the views, the food and the beaches. Of course I am talking about southern France here, Nice specifically. <br />
+                        Lastly for my top 5 I'd choose the USA because of how different it is to the country I grew up in, The Netherlands. I really think the USA has amazing scenery (aswell as food lol)
+                        and I will be sure to visit it again sometime to see what else it has to offer." <br /><br />
+                        - Maxim Koltypin
+                    </i>
+                    <br /><br />
+                </p>
             </div>
+
+
         </section>
     )
 
