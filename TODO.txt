@@ -1,14 +1,22 @@
 # IDEAS
 
-- mainpage with most recent blogs in chronological order
+- enable comments/ratings on blogs
+
+### Login/register
 - login/register page for users 
+
+# Profile page
 - page where users can make their own blogs
+- user page which shows their customized profile, all countries that user has visited and a list of all their blogs
+
+### Destinations
+- interactive map to visually display locations (mapping libraries include "Leaflet", "Mapbox") to search for countries 
+     and everything that you can do there.
+     (perhaps copy same map to bucketlist page under user profile)
 - page with "randomized destination" button which shows a random travel destination idea
      (use API call with any of: "OpenTripMap API", "REST Countries API", "Google Places API")
-- user page which shows their customized profile, all countries that user has visited and a list of all their blogs
-- searchbar functionality through which users can filter or find the specific blogs they are looking for
-- enable comments/ratings on blogs
-- interactive map to visually display locations (mapping libraries include "Leaflet", "Mapbox")
+
+
 
 
 
@@ -34,4 +42,4 @@ Further modifications to styling.
 
 17-11-2023:
 Modified home screen, added about section and finished hero section.
-Added about section with countries listed.
+Added about section with countries listed. TODO -> add pictures under countries li to match it.
