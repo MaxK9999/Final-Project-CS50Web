@@ -2,6 +2,9 @@ import React from "react";
 import "../components_styles/Heading.css";
 import "../components_styles/Home.css";
 import banner from "../videos/banner.mp4";
+import balloon from "../images/balloon.jpg";
+import holi from "../images/holi.jpg";
+import tokyo from "../images/tokyo.jpg";
 import Heading from "./Heading";
 
 const Home = () => {
@@ -25,20 +28,44 @@ const Home = () => {
             </div>
         </div>
     )
+
+    const landingPageImages = (
+        <div className="landing-page-images">
+            <img src={balloon} alt="balloon" />
+            <img src={holi} alt="holi" />
+            <img src={tokyo} alt="tokyo" />
+        </div>
+    )
         
     return (
         <section className="home-page">
             {homeBanner}
             {heroSectionHome}
             <br />
-            <div className="landingpage">
-                <h2>Our Story</h2>
+            <div className="landing-page">
+                <h1>Our mission </h1>
                 <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure, reiciendis. Eos nam quos dicta rem ipsam enim, repellendus beatae delectus similique debitis quaerat itaque natus mollitia perferendis vel commodi consequuntur?
-                    Error debitis ex, iste, libero ab labore ad nemo, quas accusamus dicta repellat deserunt voluptatum asperiores soluta expedita! Tempora atque error placeat repudiandae laboriosam! Aliquam distinctio eius ea ipsam amet.
-                    Repellendus alias vitae impedit odio voluptatem a, tenetur illum porro voluptates est assumenda, inventore rem, repudiandae accusantium! Dignissimos nostrum dolorum eos nemo suscipit dolorem odio possimus veritatis tenetur, culpa illum?
-                    Iste maxime officia cum soluta omnis alias delectus a ad. Labore, debitis maiores quos consectetur quod nobis earum veniam. Atque blanditiis distinctio delectus inventore corrupti quibusdam saepe maxime aperiam asperiores?
-                    Blanditiis, expedita obcaecati? Ex enim cum neque dolorem, reiciendis tempore sed, earum temporibus nihil nostrum impedit. Magnam tenetur sint nam adipisci tempore harum error blanditiis! Aliquid veritatis facere omnis sit!
+                    At OdysseyOpus, our mission is to provide inspiration and a delightful reading experience to our users. We believe that everyone's journey is a unique adventure, and we aim to share stories that resonate, uplift, and connect. Our team is dedicated to curating content that sparks creativity, fosters exploration, and brings joy to our community.
+                    We invite users to be a part of this collective journey by sharing their own adventures and experiences. Whether it's a travel tale, a personal discovery, or a moment of triumph, we want to create a platform where individuals can express themselves and inspire others in the process.
+                    Join us in celebrating the diversity of human experiences and let OdysseyOpus be the canvas for your stories. Together, let's build a community where inspiration knows no boundaries, and every narrative adds a unique brushstroke to the canvas of life.
+                </p>
+                {landingPageImages}
+            </div>
+            <br />
+            <div className="about-us">
+                <h1>About us</h1>
+                <p>
+                    Currently our team exists of one extremely devoted individual who is passionate about travel and exploring the world. He has already seen most of Europe aswell as North America and Asia.
+                    But of course you, the avid travel freak, already know that "seeing most of ___" is never enough. And that's what we at OdysseyOpus think aswell, we will not stop until we have explored all of the world.
+                    <br /> 
+                    <br />
+                    So that's why we are here! We have procured this website for you, the likeminded individual who absolutely loves seeing every nook and cranny of the world, and in turn is not afraid to share their stories with the world.
+                    <br />
+                    The mastermind behind this team? none other than <strong>Maxim Koltypin</strong>. Let us introduce him below:
+
+                    <div className="team">
+
+                    </div>
                 </p>
             </div>
         </section>
