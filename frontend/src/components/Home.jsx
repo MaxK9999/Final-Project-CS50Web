@@ -9,6 +9,11 @@ import forward from "../images/forward.jpg";
 import swiss1 from "../images/swiss1.jpg";
 import swiss2 from "../images/swiss2.jpg";
 import swiss3 from "../images/swiss3.jpg";
+import austria2 from "../images/austria2.jpg";
+import austria3 from "../images/austria3.jpg";
+import france1 from "../images/france1.jpg";
+import france2 from "../images/france2.jpg";
+import france3 from "../images/france3.jpg";
 import Heading from "./Heading";
 
 const Home = () => {
@@ -91,7 +96,7 @@ const Home = () => {
                 </p>
                 <p>
                     Maxim is a 24 year old marine and self taught full stack developer. So far he has already visited many continents and their countries and is planning on visiting many more!
-                    When questioned about what countries were the most memorable for him, his top five would be:
+                    When questioned about what countries were the most memorable for him, his top three would be:
 
                     <ul className="countries">
                         <li>Switzerland</li>
@@ -100,19 +105,23 @@ const Home = () => {
                             <img src={swiss2} alt="swiss2" />
                             <img src={swiss3} alt="swiss3" />
                         </div >    
-                        <li>Japan</li>
                         <li>Austria</li>
+                        <div className="austria-pictures">
+                            <img src={austria2} alt="austria2" />
+                            <img src={austria3} alt="austria3" />
+                        </div>
                         <li>France</li>
-                        <li>USA</li>
+                        <div className="france-pictures">
+                            <img src={france2} alt="france1" />
+                            <img src={france3} alt="france2" />
+                            <img src={france1} alt="france3" />
+                        </div>
                     </ul>
                     <br /><br />
                     <i>
-                        "Being a massive fan of the outdoors, mountains and nature, Switzerland was an absolute no-brainer. Japan would be a very close second because of it's very rich culture
-                        and history. Everything about Japan just absolutely makes me want to revisit it again someday! <br />
+                        "Being a massive fan of the outdoors, mountains and nature, Switzerland was an absolute no-brainer.
                         Austria will always and forever be in my heart because I grew up with skiing and what better place to shred some fresh snow than in Austria.
-                        France is in here because I absolutely love the views, the food and the beaches. Of course I am talking about southern France here, Nice specifically. <br />
-                        Lastly for my top 5 I'd choose the USA because of how different it is to the country I grew up in, The Netherlands. I really think the USA has amazing scenery (aswell as food lol)
-                        and I will be sure to visit it again sometime to see what else it has to offer." <br /><br />
+                        France is in here because I absolutely love the views, the food and the beaches. Of course I am talking about southern France here, Nice specifically. <br /><br /><br />
                         - Maxim Koltypin
                     </i>
                     <br /><br />
