@@ -6,6 +6,9 @@ import balloon from "../images/balloon.jpg";
 import holi from "../images/holi.jpg";
 import tokyo from "../images/tokyo.jpg";
 import forward from "../images/forward.jpg";
+import swiss1 from "../images/swiss1.jpg";
+import swiss2 from "../images/swiss2.jpg";
+import swiss3 from "../images/swiss3.jpg";
 import Heading from "./Heading";
 
 const Home = () => {
@@ -92,6 +95,11 @@ const Home = () => {
 
                     <ul className="countries">
                         <li>Switzerland</li>
+                        <div className="swiss-pictures">
+                            <img src={swiss1} alt="swiss1" />
+                            <img src={swiss2} alt="swiss2" />
+                            <img src={swiss3} alt="swiss3" />
+                        </div >    
                         <li>Japan</li>
                         <li>Austria</li>
                         <li>France</li>
