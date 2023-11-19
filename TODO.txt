@@ -43,3 +43,8 @@ Further modifications to styling.
 17-11-2023:
 Modified home screen, added about section and finished hero section.
 Added about section with countries listed. TODO -> add pictures under countries li to match it.
+
+19-11-2023:
+Started working on Login/Register page, functionality is not correct yet.
+Added more pictures to home page, DONE for now.
+Made some CSS changes concerning media queries.
