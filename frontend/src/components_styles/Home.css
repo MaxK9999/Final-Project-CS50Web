@@ -118,6 +118,10 @@ video {
         justify-content: flex-start;
         font: 1rem 'Montserrat', sans-serif;
     }
+
+    .heading p {
+        font-size: 1rem;
+    }
 }
 
 @media only screen and (max-width: 660px) {

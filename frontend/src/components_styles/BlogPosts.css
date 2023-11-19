@@ -171,3 +171,14 @@ input {
   -webkit-transition-delay: 0.35s;
   transition-delay: 0.35s;
 }
+
+
+@media only screen and (max-width: 660px) {
+    .blog-posts {
+        margin-left: 0;
+    }
+
+    .snip1577 {
+        min-width: 40%;
+    }
+}

@@ -2,18 +2,18 @@ import React from "react";
 import "../components_styles/Heading.css";
 import "../components_styles/Home.css";
 import banner from "../videos/banner.mp4";
-import balloon from "../images/balloon.jpg";
-import holi from "../images/holi.jpg";
-import tokyo from "../images/tokyo.jpg";
-import forward from "../images/forward.jpg";
-import swiss1 from "../images/swiss1.jpg";
-import swiss2 from "../images/swiss2.jpg";
-import swiss3 from "../images/swiss3.jpg";
-import austria2 from "../images/austria2.jpg";
-import austria3 from "../images/austria3.jpg";
-import france1 from "../images/france1.jpg";
-import france2 from "../images/france2.jpg";
-import france3 from "../images/france3.jpg";
+import balloon from "../images/home/balloon.jpg";
+import holi from "../images/home/holi.jpg";
+import tokyo from "../images/home/tokyo.jpg";
+import forward from "../images/home/forward.jpg";
+import swiss1 from "../images/home/swiss1.jpg";
+import swiss2 from "../images/home/swiss2.jpg";
+import swiss3 from "../images/home/swiss3.jpg";
+import austria2 from "../images/home/austria2.jpg";
+import austria3 from "../images/home/austria3.jpg";
+import france1 from "../images/home/france1.jpg";
+import france2 from "../images/home/france2.jpg";
+import france3 from "../images/home/france3.jpg";
 import Heading from "./Heading";
 
 const Home = () => {
@@ -121,7 +121,8 @@ const Home = () => {
                     <i>
                         "Being a massive fan of the outdoors, mountains and nature, Switzerland was an absolute no-brainer.
                         Austria will always and forever be in my heart because I grew up with skiing and what better place to shred some fresh snow than in Austria.
-                        France is in here because I absolutely love the views, the food and the beaches. Of course I am talking about southern France here, Nice specifically. <br /><br /><br />
+                        France is in here because I absolutely love the views, the food and the beaches. Of course I am talking about southern France here, Nice specifically."
+                         <br /><br />
                         - Maxim Koltypin
                     </i>
                     <br /><br />
