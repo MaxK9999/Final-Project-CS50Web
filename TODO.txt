@@ -48,3 +48,5 @@ Added about section with countries listed. TODO -> add pictures under countries 
 Started working on Login/Register page, functionality is not correct yet.
 Added more pictures to home page, DONE for now.
 Made some CSS changes concerning media queries.
+
+21-11-2023
