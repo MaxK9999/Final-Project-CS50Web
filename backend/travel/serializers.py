@@ -5,10 +5,12 @@ from .models import BlogPost
 
 class BlogPostSerializer(serializers.ModelSerializer):
     created_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
+    author = serializers.CharField(source='author.username', read_only=True)
     
     class Meta:
         model = BlogPost
         fields = '__all__'
+        depth = 1
 
 
 class UserSerializer(serializers.ModelSerializer):

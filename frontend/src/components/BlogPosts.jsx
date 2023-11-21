@@ -54,23 +54,24 @@ const BlogPosts = () => {
             {heroSection}
             <br />
             <div className="blog-posts">
-                    <ul>
-                    {blogPosts.map((post) => (
-                        <figure key={post.id} className="snip1577" >
-                            <img src={post.banner_image} alt={post.title} loading="lazy" />
-                            <figcaption>
-                            <h3>{post.title}</h3><br/>
-                            <h4>{post.content}</h4>
-                            <br/>
-                            <h4>Created By: {post.author}</h4>
-                            </figcaption>
-                        </figure>
-                        ))}
-                    </ul> 
-
-                    {blogPosts.length === 0 && (
+                <ul>
+                {blogPosts.results && blogPosts.results.length > 0 ? (
+                    blogPosts.results.map((post) => (
+                    <figure key={post.id} className="snip1577">
+                        <img src={post.banner_image} alt={post.title} loading="lazy" />
+                        <figcaption>
+                        <h3>{post.title}</h3>
+                        <br />
+                        <h4>{post.content}</h4>
+                        <br />
+                        <h4>Created By: {post.author}</h4>
+                        </figcaption>
+                    </figure>
+                    ))
+                ) : (
                     <h3>No blog posts found matching your criteria.</h3>
                 )}
+                </ul>
             </div> 
         </section>
     ); 
