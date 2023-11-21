@@ -50,3 +50,7 @@ Added more pictures to home page, DONE for now.
 Made some CSS changes concerning media queries.
 
 21-11-2023
+Created new serializers.
+Created new register, login aswell as logout view.
+Tested API endpoints in localhost:8000, all seem to work.
+Created API tests inside tests.py file.
