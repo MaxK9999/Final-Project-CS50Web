@@ -1,12 +1,33 @@
 .blog-posts-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 
   .hero-section {
     border-bottom: 1px dotted #272525;
   }
+}
+
+input {
+  padding: 10px;
+  outline: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #272525;
+  background-color: transparent;
+  color: #272525;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .blog-posts {
@@ -15,24 +36,6 @@
     flex-direction: column;
 }
 
-.blog-posts-page h1 {
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom:  100px;
-    color: #aea8a8;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    font-weight: bold;
-    font-size: 40px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    line-height: 1.2;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-}
-
-.blog-posts-page p {
-  margin-left: 3vw;
-  width: 80ch;
-}
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat:200);
 .snip1577 {
@@ -104,6 +107,10 @@
   font-size: 1.1em;
   font-weight: normal;
   opacity: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .snip1577 h4 {
@@ -163,4 +170,15 @@
 .snip1577.hover h4 {
   -webkit-transition-delay: 0.35s;
   transition-delay: 0.35s;
+}
+
+
+@media only screen and (max-width: 660px) {
+    .blog-posts {
+        margin-left: 0;
+    }
+
+    .snip1577 {
+        min-width: 40%;
+    }
 }

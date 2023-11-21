@@ -1,0 +1,33 @@
+.heading {
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.heading h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.2;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+.heading p {
+    max-width: 80ch;
+    font-size: 20px;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+@media only screen and (max-width: 660px) {
+    .heading p {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin: auto 10px;
+    }
+    
+}
