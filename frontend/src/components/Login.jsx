@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../components_styles/Login.css";
 import Heading from "./Heading";
 import { registerUser, loginUser } from "../Api";
 
 const Login = () => {
+    const navigate = useNavigate();
+
     const [loginData, setLoginData] = useState({
         username: "",
         password: ""
@@ -23,6 +26,7 @@ const Login = () => {
         try {
             const response = await loginUser(loginData);
             console.log(response);
+            navigate("/");
         } catch (error) {
             console.log(error);
         }

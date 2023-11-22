@@ -2,9 +2,6 @@
 
 - enable comments/ratings on blogs
 
-### Login/register
-- login/register page for users 
-
 # Profile page
 - page where users can make their own blogs
 - user page which shows their customized profile, all countries that user has visited and a list of all their blogs
@@ -57,4 +54,5 @@ Created API tests inside tests.py file.
 
 22-11-2023:
 Fetching API endpoints in frontend.
-Updating register and login page.
+Updated register and login page. (might add transition effect later)
+Updated navigation upon login.
