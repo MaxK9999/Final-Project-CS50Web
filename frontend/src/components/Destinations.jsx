@@ -4,9 +4,11 @@ import Heading from "./Heading";
 
 const Destinations = () => {
     return (
-        <div className="heading">
-            <Heading title="Destinations" />
-        </div>
+        <section className="destinations-page">
+            <div className="heading">
+                <Heading title="Destinations" />
+            </div>
+        </section>
     );
 }
 
