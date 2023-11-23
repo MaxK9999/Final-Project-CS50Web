@@ -128,7 +128,7 @@ const Login = () => {
             )}
             {isLoginView ? (
                 <p>
-                    Don't have an account?{" "}
+                    Don't have an account?{" "} 
                     <button className="login-button" onClick={handleToggleView}>Register here</button>
                 </p>
             ) : (

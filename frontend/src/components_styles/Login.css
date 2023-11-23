@@ -7,6 +7,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url('../images/login.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .login-form {
@@ -36,7 +39,8 @@
         cursor: pointer;
         transition: all 0.5s ease;
         box-shadow: 0 0 3px #a09d9d;
-        background-color: rgb(126, 255, 180);
+        background-color: rgb(255, 126, 190);
+        color: white;
     }
 }
 
@@ -51,9 +55,10 @@
 
     &:hover {
         cursor: pointer;
-        transition: all 0.5s ease;
+        transition: all 0.4s ease;
         box-shadow: 0 0 3px #a09d9d;
         background-color: rgb(128, 255, 255);
+        color: white;
     }
 }
 
