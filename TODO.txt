@@ -56,3 +56,7 @@ Created API tests inside tests.py file.
 Fetching API endpoints in frontend.
 Updated register and login page. (might add transition effect later)
 Updated navigation upon login.
+
+24-11-2023:
+Finished login screen aesthetics.
+Need to include login info in frontend (log isLoggedIn data)!!!

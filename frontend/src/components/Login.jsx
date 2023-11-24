@@ -51,6 +51,7 @@ const Login = () => {
 
     return (
         <section className="login-page">
+            <div className="login-bg"></div>
             <div className="heading">
                 <Heading title={isLoginView ? "Login" : "Register"} />
             </div>
