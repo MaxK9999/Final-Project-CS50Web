@@ -37,6 +37,7 @@ const Login = () => {
         try {
             const response = await registerUser(registerData);
             console.log(response);
+            navigate("/login");
         } catch (error) {
             console.log(error);
         }
