@@ -67,3 +67,11 @@ footer {
         display: none;
     }
 }
+
+.logout-button {
+    color: rgb(0, 0, 0);
+    text-decoration: underline 0.15em rgba(0, 0, 0, 0);
+    font-size: 20px;
+    border-radius: 20px;
+    transition: text-decoration-color 200ms, all 0.3s ease-in-out;
+}

@@ -5,6 +5,7 @@ import Login from './components/Login';
 import BlogPosts from './components/BlogPosts';
 import Navbar from './components/Navbar';
 import Destinations from './components/Destinations';
+import Profile from './components/Profile';
 import Contact from './components/Contact';
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/destinations" element={<Destinations />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blogposts" element={<BlogPosts />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/" element={<Home />} />
       </Routes>
     </Router>

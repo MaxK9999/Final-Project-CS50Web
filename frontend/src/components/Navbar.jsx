@@ -8,7 +8,9 @@ const Navbar = () => {
     const [isNavbarClosed, setIsNavbarClosed] = useState(false);
     const { isAuthenticated, logout } = useAuth();
 
-    const handleLogout = async () => {
+    const handleLogout = async (event) => {
+        // prevent default behavior
+        event.preventDefault();
         try {
             await logoutUser();
             logout(true);
@@ -38,9 +40,14 @@ const Navbar = () => {
                     <li>
                         <Link to="/contact">Contact</Link>
                     </li>
+                    {isAuthenticated && (
+                        <li>
+                            <Link to="/profile">Profile</Link>
+                        </li>
+                    )}
                     {isAuthenticated ? (
                         <li>
-                            <button onClick={handleLogout}>Logout</button>
+                            <Link to="/" onClick={handleLogout}>Logout</Link>
                         </li>
                     ) : (
                         <li>

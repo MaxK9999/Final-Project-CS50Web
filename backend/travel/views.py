@@ -61,6 +61,8 @@ class LoginView(APIView):
             if user.check_password(password):
                 serializer = UserSerializer(user)
                 login(request, user)
+                print(request.user)
+                print("Session ID: ", request.session.session_key)
                 return Response(serializer.data, status=status.HTTP_200_OK)
         return Response({}, status=status.HTTP_400_BAD_REQUEST)
     
@@ -71,6 +73,8 @@ class LogoutView(APIView):
     authentication_classes = [SessionAuthentication]
     def post(self, request):
         logout(request)
+        print(request.user)
+        print("Session ID: ", request.session.session_key)
         return Response({}, status=status.HTTP_200_OK)
     
     def get(self, request):
