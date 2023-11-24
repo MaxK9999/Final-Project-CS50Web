@@ -37,12 +37,14 @@ const Login = () => {
         try {
             const response = await registerUser(registerData);
             console.log(response);
-            navigate("/login");
+            // show login form after successful registration
+            setIsLoginView(true);
         } catch (error) {
             console.log(error);
         }
     };
 
+    // toggle between login and register
     const handleToggleView = () => {
         setIsLoginView(!isLoginView);
         setLoginData({ username: "", password: "" });
@@ -57,6 +59,8 @@ const Login = () => {
                 <Heading title={isLoginView ? "Login" : "Register"} />
             </div>
             {isLoginView ? (
+
+                // login form
                 <div className="login-form">
                     <form onSubmit={handleLoginSubmit}>
                         <input
@@ -85,7 +89,7 @@ const Login = () => {
 
             ) : (
 
-
+                // register form
                 <div className="login-form">
                     <form onSubmit={handleRegisterSubmit}>
                             <input
