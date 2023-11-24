@@ -60,3 +60,4 @@ Updated navigation upon login.
 24-11-2023:
 Finished login screen aesthetics.
 Need to include login info in frontend (log isLoggedIn data)!!!
+Added logout functionality, login and logout works succesfully.
