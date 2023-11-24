@@ -46,4 +46,4 @@ export const logoutUser = async () => {
         console.log('Error logging out:', error);
         throw error;
     }
-}
+};

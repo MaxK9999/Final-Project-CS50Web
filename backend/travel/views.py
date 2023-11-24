@@ -30,6 +30,7 @@ class UserViewSet(viewsets.ModelViewSet):
     
     
 class GroupViewSet(viewsets.ModelViewSet):
+    queryset = Group.objects.all()
     serializer_class = UserSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['name']
@@ -66,7 +67,7 @@ class LoginView(APIView):
 
 
 class LogoutView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     authentication_classes = [SessionAuthentication]
     def post(self, request):
         logout(request)

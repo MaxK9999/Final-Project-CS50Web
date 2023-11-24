@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import "../components_styles/Login.css";
 import Heading from "./Heading";
 import { registerUser, loginUser } from "../Api";
+import { useAuth } from "../AuthContext";
 
 const Login = () => {
     const navigate = useNavigate();
+    const { login } = useAuth();
 
     const [loginData, setLoginData] = useState({
         username: "",
@@ -27,6 +29,7 @@ const Login = () => {
             const response = await loginUser(loginData);
             console.log(response);
             navigate("/");
+            login(true);
         } catch (error) {
             console.log(error);
         }
@@ -37,7 +40,6 @@ const Login = () => {
         try {
             const response = await registerUser(registerData);
             console.log(response);
-            // show login form after successful registration
             setIsLoginView(true);
         } catch (error) {
             console.log(error);
