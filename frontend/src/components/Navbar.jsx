@@ -1,23 +1,9 @@
 import React, { useState } from "react";
 import "../components_styles/Navbar.css";
 import { Link } from "react-router-dom";
-import { useAuth } from "../AuthContext";
-import { logoutUser } from "../Api";
 
 const Navbar = () => {
     const [isNavbarClosed, setIsNavbarClosed] = useState(false);
-    const { isAuthenticated, logout } = useAuth();
-
-    const handleLogout = async (event) => {
-        // prevent default behavior
-        event.preventDefault();
-        try {
-            await logoutUser();
-            logout(true);
-        } catch (error) {
-            console.log("Error logging out:", error);
-        }
-    };
 
     const toggleNavbar = () => {
         setIsNavbarClosed(!isNavbarClosed);
@@ -40,20 +26,9 @@ const Navbar = () => {
                     <li>
                         <Link to="/contact">Contact</Link>
                     </li>
-                    {isAuthenticated && (
-                        <li>
-                            <Link to="/profile">Profile</Link>
-                        </li>
-                    )}
-                    {isAuthenticated ? (
-                        <li>
-                            <Link to="/" onClick={handleLogout}>Logout</Link>
-                        </li>
-                    ) : (
                         <li>
                             <Link to="/login">Login</Link>
                         </li>
-                    )}
                 </ul>
             </nav>
             <footer>

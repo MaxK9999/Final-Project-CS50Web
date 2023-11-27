@@ -61,5 +61,8 @@ Updated navigation upon login.
 Finished login screen aesthetics.
 Need to include login info in frontend (log isLoggedIn data)!!!
 Added logout functionality.
-Authentication is currently bugged. On refresh user get's logged out.
-This is due to session id not being properly stored in frontend.
+Authentication is currently bugged. On refresh user get's logged out
+     this is due to session id not being properly stored in frontend.
+
+27-11-2023:
+Tested backend again, seems fine, auth issue is between back-/frontend.

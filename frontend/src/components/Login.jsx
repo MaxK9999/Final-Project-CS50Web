@@ -2,49 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../components_styles/Login.css";
 import Heading from "./Heading";
-import { registerUser, loginUser } from "../Api";
-import { useAuth } from "../AuthContext";
+import Api from "../Api";
+
 
 const Login = () => {
-    const navigate = useNavigate();
-    const { login } = useAuth();
 
-    const [loginData, setLoginData] = useState({
-        username: "",
-        password: ""
-    });
-    
-    const [registerData, setRegisterData] = useState({
-        username: "",
-        email: "",
-        password: "",
-        confirmPassword: ""
-    });
 
-    const [isLoginView, setIsLoginView] = useState(true);
-
-    const handleLoginSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            const response = await loginUser(loginData);
-            console.log(response);
-            navigate("/");
-            login(true);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    const handleRegisterSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            const response = await registerUser(registerData);
-            console.log(response);
-            setIsLoginView(true);
-        } catch (error) {
-            console.log(error);
-        }
-    };
 
     // toggle between login and register
     const handleToggleView = () => {
