@@ -66,3 +66,5 @@ Authentication is currently bugged. On refresh user get's logged out
 
 27-11-2023:
 Tested backend again, seems fine, auth issue is between back-/frontend.
+TODO next -> Handle data fetching in frontend, make sure session id gets stored correctly!!!
+
