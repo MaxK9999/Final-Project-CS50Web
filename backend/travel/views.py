@@ -57,13 +57,18 @@ class LoginView(APIView):
         username = data.get("username", "")
         password = data.get("password", "")
         user = User.objects.filter(username=username).first()
-        if user:
-            if user.check_password(password):
-                serializer = UserSerializer(user)
-                login(request, user)
-                print(request.user)
-                print("Session ID: ", request.session.session_key)
-                return Response(serializer.data, status=status.HTTP_200_OK)
+        
+        if user and user.check_password(password):
+            serializer = UserSerializer(user)
+            login(request, user)
+            print(request.user)
+            print("Session ID: ", request.session.session_key)
+            
+            response_data = {
+                "user": serializer.data,
+                "session_id": request.session.session_key,
+            }
+            return Response(response_data, status=status.HTTP_200_OK)
         return Response({}, status=status.HTTP_400_BAD_REQUEST)
     
 

@@ -2,13 +2,40 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../components_styles/Login.css";
 import Heading from "./Heading";
-import Api from "../Api";
+import { api } from "../Api";
 
 
 const Login = () => {
+    const [loginData, setLoginData] = useState({ username: "", password: "" });
+    const [registerData, setRegisterData] = useState({ username: "", email: "", password: "" });
+    const [isLoginView, setIsLoginView] = useState(true);
+    const navigate = useNavigate();
 
+    const handleLoginSubmit = async (event) => {
+        event.preventDefault();
 
+        try {
+            const response = await api.post("login/", loginData);
+            console.log("Login successful:", response.data);
+            sessionStorage.setItem("session_id", response.data.session_id);
+            navigate("/");
+        } catch (error) {
+            console.log("Login failed:", error.response.data);
+        }
+    };
 
+    const handleRegisterSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+            const response = await api.post("register/", registerData);
+            console.log("Registration successful:", response.data);
+            navigate("/login");
+        } catch (error) {
+            console.log("Registration failed:", error.response.data);
+        }
+    };
+    
     // toggle between login and register
     const handleToggleView = () => {
         setIsLoginView(!isLoginView);
@@ -33,18 +60,14 @@ const Login = () => {
                             type="text"
                             placeholder="Username"
                             value={loginData.username}
-                            onChange={(event) =>
-                                setLoginData({ ...loginData, username: event.target.value })
-                            }
+                            onChange={(event) => setLoginData({ ...loginData, username: event.target.value })}
                         />
                         <input
                             className="login-input"
                             type="password"
                             placeholder="Password"
                             value={loginData.password}
-                            onChange={(event) =>
-                                setLoginData({ ...loginData, password: event.target.value })
-                            }
+                            onChange={(event) => setLoginData({ ...loginData, password: event.target.value })}
                         />
 
                         <button className="submit" type="submit">Login</button>

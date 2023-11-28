@@ -4,7 +4,7 @@ axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 axios.defaults.withCredentials = true;
 
-const api = axios.create({
+export const api = axios.create({
     baseURL: 'http://localhost:8000/api/',
 });
 
