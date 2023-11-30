@@ -64,18 +64,12 @@ class LoginView(APIView):
             print(request.user)
             print("Session ID: ", request.session.session_key)
             
-            response_data = {
-                "user": serializer.data,
-                "session_id": request.session.session_key,
-            }
-            return Response(response_data, status=status.HTTP_200_OK)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         return Response({}, status=status.HTTP_400_BAD_REQUEST)
     
 
 
 class LogoutView(APIView):
-    permission_classes = [permissions.AllowAny]
-    authentication_classes = [SessionAuthentication]
     def post(self, request):
         logout(request)
         print(request.user)

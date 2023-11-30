@@ -17,7 +17,6 @@ const Login = () => {
         try {
             const response = await api.post("login/", loginData);
             console.log("Login successful:", response.data);
-            sessionStorage.setItem("session_id", response.data.session_id);
             navigate("/");
         } catch (error) {
             console.log("Login failed:", error.response.data);
