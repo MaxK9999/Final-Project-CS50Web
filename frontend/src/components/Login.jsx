@@ -29,7 +29,7 @@ const Login = () => {
         try {
             const response = await api.post("register/", registerData);
             console.log("Registration successful:", response.data);
-            navigate("/login");
+            window.location.reload();
         } catch (error) {
             console.log("Registration failed:", error.response.data);
         }

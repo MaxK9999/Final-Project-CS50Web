@@ -68,3 +68,5 @@ Authentication is currently bugged. On refresh user get's logged out
 Tested backend again, seems fine, auth issue is between back-/frontend.
 TODO next -> Handle data fetching in frontend, make sure session id gets stored correctly!!!
 
+30-11-2023:
+Solved backend-/-frontend issue regarding CORS, login and logout both work now.
