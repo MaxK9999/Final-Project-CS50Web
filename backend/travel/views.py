@@ -15,6 +15,9 @@ class BlogPostViewSet(viewsets.ModelViewSet):
     search_fields = ['title', 'content', 'author__username']
     permission_classes = [permissions.AllowAny]
     
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+    
     
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
@@ -67,7 +70,6 @@ class LoginView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response({}, status=status.HTTP_400_BAD_REQUEST)
     
-
 
 class LogoutView(APIView):
     def post(self, request):
