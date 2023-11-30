@@ -3,13 +3,22 @@ import "../components_styles/Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { api } from "../Api";
 
+
 const Navbar = () => {
     const [isNavbarClosed, setIsNavbarClosed] = useState(false);
     const navigate = useNavigate();
     
+
     const toggleNavbar = () => {
         setIsNavbarClosed(!isNavbarClosed);
     };
+
+
+    function getCookie(name) {
+        const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+        return cookieValue ? cookieValue.pop() : '';
+    };
+
 
     const handleLogout = async (event) => {
         event.preventDefault();
@@ -28,6 +37,7 @@ const Navbar = () => {
             console.log("Logout failed:", error.response.data);
         }
     };
+
 
     return (
         <div className={`navbar ${isNavbarClosed ? "" : "navbar-closed"}`}>
@@ -60,5 +70,6 @@ const Navbar = () => {
         </div>
     );
 };
+
 
 export default Navbar;
