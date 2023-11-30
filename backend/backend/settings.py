@@ -45,16 +45,12 @@ MIDDLEWARE = [
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SESSION_COOKIE_NAME = 'sessionid'
 
-<<<<<<< HEAD
-CORS_ALLOWED_CREDENTIALS = True
-=======
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
->>>>>>> 0c0cc0b (experimental logout function)
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
