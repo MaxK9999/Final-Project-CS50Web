@@ -73,3 +73,8 @@ Solved backend-/-frontend issue regarding CORS, login and logout both work now.
 Updated backend, added new tests, fixed blogposts class.
 Frontend works, but needs conditional rendering!
 (sessionid now gets stored correctly in Cookies!!!)
+
+04-12-2023:
+Setting up email messaging via Gmail.
+Email class set up and working on backend, mails received succesfully in gmail.
+     Need to set up testCase for emails!!!

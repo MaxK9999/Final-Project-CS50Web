@@ -1,5 +1,5 @@
 from rest_framework import routers
-from .views import BlogPostViewSet, UserViewSet, GroupViewSet, LoginView, LogoutView, RegisterView
+from .views import BlogPostViewSet, UserViewSet, GroupViewSet, LoginView, LogoutView, RegisterView, EmailHandler
 from django.urls import path, include
 
 
@@ -14,6 +14,7 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('register/', RegisterView.as_view(), name='register'),
+    path('send_mail/', EmailHandler.as_view(), name='send_mail'),
 ]
 
 

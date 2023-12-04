@@ -1,5 +1,8 @@
 from django.test import TestCase
+from django.urls import reverse
 from django.contrib.auth.models import User
+from django.core.mail import outbox
+from django.core import mail
 from rest_framework.test import APIClient
 from rest_framework import status
 from .models import BlogPost
@@ -70,3 +73,6 @@ class LogoutViewTest(TestCase):
         response = self.client.post('/api/logout/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+
+class EmailHandlerTest(TestCase):
+    pass

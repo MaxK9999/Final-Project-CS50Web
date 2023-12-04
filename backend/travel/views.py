@@ -3,11 +3,14 @@ from rest_framework.authentication import SessionAuthentication
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib.auth.models import User, Group
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
+from django.core.mail import send_mail, BadHeaderError, EmailMessage
+from django.conf import settings
 from .models import BlogPost
 from .serializers import BlogPostSerializer, UserSerializer
 
-# Create your views here.
+
 class BlogPostViewSet(viewsets.ModelViewSet):
     queryset = BlogPost.objects.all().order_by('-created_at')
     serializer_class = BlogPostSerializer
@@ -80,3 +83,30 @@ class LogoutView(APIView):
     
     def get(self, request):
         return Response({"detail": "Method \"GET\" not allowed."}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+    
+
+class EmailHandler(APIView):
+    permission_classes = [permissions.AllowAny]
+    
+    # Use a noreply mail for security reasons
+    def post(self, request):
+        data = request.data
+        subject = data.get("subject", "")
+        message = data.get("message", "")
+        from_email = "noreply@example.com"
+
+        if subject and message:
+            try:
+                email_content = f"From: {request.user.email}\n\n{message}"
+                email = EmailMessage(
+                    subject,
+                    email_content,
+                    from_email,
+                    [settings.EMAIL_HOST_USER]
+                )
+                email.send()
+                return Response({}, status=status.HTTP_200_OK)
+            except BadHeaderError:
+                return Response("Invalid header found.", status=status.HTTP_400_BAD_REQUEST)
+            
+        return Response("Make sure all fields are entered and valid.", status=status.HTTP_400_BAD_REQUEST)
