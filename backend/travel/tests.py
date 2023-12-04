@@ -124,4 +124,4 @@ class EmailHandlerTest(TestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         
         # Assert email was not sent
-        self.assertEqual(len(mail.outbox), 0)
+        self.assertEqual(len(mail.outbox), 0) 
