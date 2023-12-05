@@ -57,10 +57,22 @@
 #linkedin {
     font-size: 40px;
     color: #0077b5;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        transition: all 0.3s ease-in-out;
+        transform: scale(1.1);
+    }
 }
 
 #github {
     margin-top: 10px;
     font-size: 40px;
     color: #333;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        transition: all 0.3s ease-in-out;
+        transform: scale(1.1);
+    }
 }
