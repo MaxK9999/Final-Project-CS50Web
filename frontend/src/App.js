@@ -7,9 +7,11 @@ import Navbar from './components/Navbar';
 import Destinations from './components/Destinations';
 import Profile from './components/Profile';
 import Contact from './components/Contact';
+import { AuthProvider } from './AuthContext';
 
 const App = () => {
   return (
+    <AuthProvider>
     <Router>
       <Navbar />
       <Routes>
@@ -23,6 +25,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
       </Routes>
     </Router>
+    </AuthProvider>
   );
 };
 

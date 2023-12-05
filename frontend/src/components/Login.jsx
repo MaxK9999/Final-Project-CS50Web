@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import "../components_styles/Login.css";
 import Heading from "./Heading";
 import { api } from "../Api";
-
+import { login, useAuth } from "../AuthContext";
 
 const Login = () => {
+    const { login } = useAuth();
     const [loginData, setLoginData] = useState({ username: "", password: "" });
     const [registerData, setRegisterData] = useState({ username: "", email: "", password: "" });
     const [isLoginView, setIsLoginView] = useState(true);
@@ -18,6 +19,7 @@ const Login = () => {
             const response = await api.post("login/", loginData);
             console.log("Login successful:", response.data);
             navigate("/");
+            login();
         } catch (error) {
             console.log("Login failed:", error.response.data);
         }
