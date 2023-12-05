@@ -94,10 +94,19 @@ class EmailHandler(APIView):
         subject = data.get("subject", "")
         message = data.get("message", "")
         from_email = "noreply@example.com"
-
+        
+        # If anonymous user, let user type in email
+        if not request.user.is_authenticated:
+            provided_email = data.get("email", "")
+            if not provided_email:
+                return Response("Please provide an email.", status=status.HTTP_400_BAD_REQUEST)
+        else:
+            # Use provided email or fallback to user's email
+            provided_email = data.get("email", request.user.email)
+            
         if subject and message:
             try:
-                email_content = f"From: {request.user.email}\n\n{message}"
+                email_content = f"From: {provided_email}\n\n{message}"
                 email = EmailMessage(
                     subject,
                     email_content,
