@@ -8,6 +8,7 @@ export const api = axios.create({
     baseURL: 'http://localhost:8000/api/',
 });
 
+// Fetch Blog Posts from the API
 export const getBlogPosts = async (searchQuery = '') => {
     try {
         const response = await api.get(`blogposts?search=${searchQuery}`);
@@ -18,3 +19,5 @@ export const getBlogPosts = async (searchQuery = '') => {
         throw error;
     }
 };
+
+// Fetch email data from the API
