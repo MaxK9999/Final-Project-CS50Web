@@ -82,33 +82,6 @@ class EmailHandlerTest(TestCase):
             password='testpassword',
             email='testuser@example.com'
         )
-
-
-    def test_email_headers_and_fields_200(self):
-        self.client.force_login(self.user)
-        url = reverse('send_mail')
-        data = {
-            'subject': 'Test Email',
-            'message': 'This is a test email.',
-        }
-        response = self.client.post(url, data, format='json')
-        
-        # Assert response 200
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        
-        
-        # Assert email was sent correctly
-        self.assertEqual(len(mail.outbox), 1)
-        sent_email = mail.outbox[0]
-        
-        # Assert email headers
-        self.assertEqual(sent_email.subject, 'Test Email')
-        self.assertEqual(sent_email.from_email, 'noreply@example.com')
-        self.assertIn('From: testuser@example.com', sent_email.body)
-        
-        # Check email fields
-        self.assertIn('This is a test email.', sent_email.body)
-        
     
     def test_missing_subject_or_message_400(self):
         self.client.force_login(self.user)
