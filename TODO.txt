@@ -82,3 +82,4 @@ Email class set up and working on backend, mails received succesfully in gmail.
 05-12-2023:
 Fixed email testCase, CI/CD retuns OK.
 Solved navbar displaying different links on Authentication.
+Fixed session logging for Authentication in AuthContext.jsx.
