@@ -100,13 +100,15 @@ class EmailHandler(APIView):
             provided_email = data.get("email", "")
             if not provided_email:
                 return Response("Please provide an email.", status=status.HTTP_400_BAD_REQUEST)
+            provided_name = data.get("name", "")
         else:
             # Use provided email or fallback to user's email
             provided_email = data.get("email", request.user.email)
+            provided_name = data.get("name", request.user.username)
             
         if subject and message:
             try:
-                email_content = f"From: {provided_email}\n\n{message}"
+                email_content = f"From: {provided_email}\nName:{provided_name}\n\n{message}"
                 email = EmailMessage(
                     subject,
                     email_content,

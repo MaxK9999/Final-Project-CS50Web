@@ -26,6 +26,8 @@ const Contact = () => {
             const response = await getEmailData(formData);
             console.log("Email sent successfully:", response.data);
             setFormData({
+                email: "",
+                name: "",
                 subject: "",
                 message: "",
             });
@@ -47,7 +49,9 @@ const Contact = () => {
             </div>
             <div className="social-media">
                 <div className="contact-form">
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit}
+                    autoComplete="off"
+                    >
                         {!isAuthenticated && (
                             <>
                                 <input 
@@ -58,6 +62,18 @@ const Contact = () => {
                                 value={formData.email}
                                 onChange={handleChange}
                                 placeholder="Enter your email"
+                                autoComplete="off"
+                                required
+                                />
+
+                               <input 
+                                className="contact-input"
+                                type="text"
+                                name="name"
+                                id="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                placeholder="Enter your name"
                                 required
                                 />
                             </>
@@ -70,7 +86,7 @@ const Contact = () => {
                         id="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        placeholder="Enter subject"
+                        placeholder="Mail subject"
                         required
                         />
 
@@ -93,6 +109,7 @@ const Contact = () => {
                     <a href="https://github.com/MaxK9999">
                         <i class="fa-brands fa-github" id="github"></i>
                     </a>
+                    
                 </div>
             </div>
         </section>

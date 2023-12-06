@@ -39,10 +39,12 @@
     padding: 10px;
     font: 16px 'Montserrat', Arial, Helvetica, sans-serif;
     transition: all 0.3s ease-in-out;
+    background-color: aliceblue;
 
     &:focus {
         transition: all 0.3s ease-in-out;
         transform: scale(1.01);
+        box-shadow: 10px 10px 5px rgb(235, 235, 183);
     }
 }
 
@@ -74,5 +76,19 @@
     &:hover {
         transition: all 0.3s ease-in-out;
         transform: scale(1.1);
+    }
+}
+
+@media only screen and (max-width: 660px) {
+    .contact-input {
+        width: 250px;
+    }
+
+    #message {
+        width: 250px;
+    }
+
+    .social-media-icons {
+        margin-left: 10%;
     }
 }
