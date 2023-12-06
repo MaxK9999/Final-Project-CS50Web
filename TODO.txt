@@ -86,10 +86,12 @@ Fixed session logging for Authentication in AuthContext.jsx.
 Filled in Contact page with conditional email (if authenticated == no email field).
 
 06-12-2023:
-Satisfied wit Contact page.
+Satisfied with Contact page.
 Starting brainstorming for Destinations and Profile page 
      (what API to use etc).
 Started working on destinations and profile page backend viewsets.
      (For now, planning on creating hybrid functionality of local API aswell as implementing
      REST countries API).
 Added update_countries.py file which fetches country data from the REST countries API.
+Added OpenTripMap api in opentrip branch, instead going to implement REST countries in backend and  
+     OpenTripMap in frontend as it takes up too much db space.
