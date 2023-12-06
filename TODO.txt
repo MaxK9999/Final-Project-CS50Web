@@ -83,3 +83,4 @@ Email class set up and working on backend, mails received succesfully in gmail.
 Fixed email testCase, CI/CD retuns OK.
 Solved navbar displaying different links on Authentication.
 Fixed session logging for Authentication in AuthContext.jsx.
+Filled in Contact page with conditional email (if authenticated == no email field).
