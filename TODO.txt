@@ -92,3 +92,4 @@ Starting brainstorming for Destinations and Profile page
 Started working on destinations and profile page backend viewsets.
      (For now, planning on creating hybrid functionality of local API aswell as implementing
      REST countries API).
+Added update_countries.py file which fetches country data from the REST countries API.
