@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
 from django.core.mail import send_mail, BadHeaderError, EmailMessage
 from django.conf import settings
+from collections import defaultdict
 from .models import BlogPost, UserProfile, LocalPlace
 from .serializers import BlogPostSerializer, UserSerializer, UserProfileSerializer, LocalPlaceSerializer
 
@@ -48,6 +49,21 @@ class LocalPlaceViewSet(viewsets.ModelViewSet):
     queryset = LocalPlace.objects.all()
     serializer_class = LocalPlaceSerializer
     permission_classes = [permissions.AllowAny]
+    
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+        serialized_data = LocalPlaceSerializer(queryset, many=True).data
+        
+        # Grouping logic of country names
+        grouped_results = defaultdict(list)
+        for entry in serialized_data:
+            country = entry["country"]
+            city = entry["city"]
+            grouped_results[country].append(city)
+        
+        # Converting defaultdict to dict
+        grouped_results = [{"country": country, "cities": cities} for country, cities in grouped_results.items()]
+        return Response(grouped_results)
     
     
 class GroupViewSet(viewsets.ModelViewSet):

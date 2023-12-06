@@ -1,0 +1,93 @@
+[
+    {"model": "travel.localplace", "pk": 1, "fields": {"country": "United States", "city": "New York", "code": "US"}},
+    {"model": "travel.localplace", "pk": 2, "fields": {"country": "United States", "city": "Los Angeles", "code": "US"}},
+    {"model": "travel.localplace", "pk": 3, "fields": {"country": "United States", "city": "Chicago", "code": "US"}},
+
+    {"model": "travel.localplace", "pk": 4, "fields": {"country": "China", "city": "Beijing", "code": "CN"}},
+    {"model": "travel.localplace", "pk": 5, "fields": {"country": "China", "city": "Shanghai", "code": "CN"}},
+    {"model": "travel.localplace", "pk": 6, "fields": {"country": "China", "city": "Guangzhou", "code": "CN"}},
+
+    {"model": "travel.localplace", "pk": 7, "fields": {"country": "India", "city": "New Delhi", "code": "IN"}},
+    {"model": "travel.localplace", "pk": 8, "fields": {"country": "India", "city": "Mumbai", "code": "IN"}},
+    {"model": "travel.localplace", "pk": 9, "fields": {"country": "India", "city": "Bangalore", "code": "IN"}},
+
+    {"model": "travel.localplace", "pk": 10, "fields": {"country": "United Kingdom", "city": "London", "code": "GB"}},
+    {"model": "travel.localplace", "pk": 11, "fields": {"country": "United Kingdom", "city": "Manchester", "code": "GB"}},
+    {"model": "travel.localplace", "pk": 12, "fields": {"country": "United Kingdom", "city": "Edinburgh", "code": "GB"}},
+
+    {"model": "travel.localplace", "pk": 13, "fields": {"country": "Brazil", "city": "Sao Paulo", "code": "BR"}},
+    {"model": "travel.localplace", "pk": 14, "fields": {"country": "Brazil", "city": "Rio de Janeiro", "code": "BR"}},
+    {"model": "travel.localplace", "pk": 15, "fields": {"country": "Brazil", "city": "Brasilia", "code": "BR"}},
+
+    {"model": "travel.localplace", "pk": 16, "fields": {"country": "Russia", "city": "Moscow", "code": "RU"}},
+    {"model": "travel.localplace", "pk": 17, "fields": {"country": "Russia", "city": "Saint Petersburg", "code": "RU"}},
+    {"model": "travel.localplace", "pk": 18, "fields": {"country": "Russia", "city": "Novosibirsk", "code": "RU"}},
+
+    {"model": "travel.localplace", "pk": 19, "fields": {"country": "Japan", "city": "Tokyo", "code": "JP"}},
+    {"model": "travel.localplace", "pk": 20, "fields": {"country": "Japan", "city": "Osaka", "code": "JP"}},
+    {"model": "travel.localplace", "pk": 21, "fields": {"country": "Japan", "city": "Kyoto", "code": "JP"}},
+
+    {"model": "travel.localplace", "pk": 22, "fields": {"country": "France", "city": "Paris", "code": "FR"}},
+    {"model": "travel.localplace", "pk": 23, "fields": {"country": "France", "city": "Marseille", "code": "FR"}},
+    {"model": "travel.localplace", "pk": 24, "fields": {"country": "France", "city": "Lyon", "code": "FR"}},
+
+    {"model": "travel.localplace", "pk": 25, "fields": {"country": "Germany", "city": "Berlin", "code": "DE"}},
+    {"model": "travel.localplace", "pk": 26, "fields": {"country": "Germany", "city": "Munich", "code": "DE"}},
+    {"model": "travel.localplace", "pk": 27, "fields": {"country": "Germany", "city": "Hamburg", "code": "DE"}},
+
+    {"model": "travel.localplace", "pk": 28, "fields": {"country": "Italy", "city": "Rome", "code": "IT"}},
+    {"model": "travel.localplace", "pk": 29, "fields": {"country": "Italy", "city": "Milan", "code": "IT"}},
+    {"model": "travel.localplace", "pk": 30, "fields": {"country": "Italy", "city": "Venice", "code": "IT"}},
+
+    {"model": "travel.localplace", "pk": 31, "fields": {"country": "Australia", "city": "Sydney", "code": "AU"}},
+    {"model": "travel.localplace", "pk": 32, "fields": {"country": "Australia", "city": "Melbourne", "code": "AU"}},
+    {"model": "travel.localplace", "pk": 33, "fields": {"country": "Australia", "city": "Brisbane", "code": "AU"}},
+
+    {"model": "travel.localplace", "pk": 34, "fields": {"country": "Spain", "city": "Madrid", "code": "ES"}},
+    {"model": "travel.localplace", "pk": 35, "fields": {"country": "Spain", "city": "Barcelona", "code": "ES"}},
+    {"model": "travel.localplace", "pk": 36, "fields": {"country": "Spain", "city": "Seville", "code": "ES"}},
+
+    {"model": "travel.localplace", "pk": 37, "fields": {"country": "Canada", "city": "Toronto", "code": "CA"}},
+    {"model": "travel.localplace", "pk": 38, "fields": {"country": "Canada", "city": "Vancouver", "code": "CA"}},
+    {"model": "travel.localplace", "pk": 39, "fields": {"country": "Canada", "city": "Montreal", "code": "CA"}},
+
+    {"model": "travel.localplace", "pk": 40, "fields": {"country": "South Korea", "city": "Seoul", "code": "KR"}},
+    {"model": "travel.localplace", "pk": 41, "fields": {"country": "South Korea", "city": "Busan", "code": "KR"}},
+    {"model": "travel.localplace", "pk": 42, "fields": {"country": "South Korea", "city": "Incheon", "code": "KR"}},
+
+    {"model": "travel.localplace", "pk": 43, "fields": {"country": "Mexico", "city": "Mexico City", "code": "MX"}},
+    {"model": "travel.localplace", "pk": 44, "fields": {"country": "Mexico", "city": "Guadalajara", "code": "MX"}},
+    {"model": "travel.localplace", "pk": 45, "fields": {"country": "Mexico", "city": "Monterrey", "code": "MX"}},
+
+    {"model": "travel.localplace", "pk": 46, "fields": {"country": "Netherlands", "city": "Amsterdam", "code": "NL"}},
+    {"model": "travel.localplace", "pk": 47, "fields": {"country": "Netherlands", "city": "Rotterdam", "code": "NL"}},
+    {"model": "travel.localplace", "pk": 48, "fields": {"country": "Netherlands", "city": "Utrecht", "code": "NL"}},
+
+    {"model": "travel.localplace", "pk": 49, "fields": {"country": "Switzerland", "city": "Zurich", "code": "CH"}},
+    {"model": "travel.localplace", "pk": 50, "fields": {"country": "Switzerland", "city": "Geneva", "code": "CH"}},
+    {"model": "travel.localplace", "pk": 51, "fields": {"country": "Switzerland", "city": "Basel", "code": "CH"}},
+
+    {"model": "travel.localplace", "pk": 52, "fields": {"country": "Sweden", "city": "Stockholm", "code": "SE"}},
+    {"model": "travel.localplace", "pk": 53, "fields": {"country": "Sweden", "city": "Gothenburg", "code": "SE"}},
+    {"model": "travel.localplace", "pk": 54, "fields": {"country": "Sweden", "city": "Malmo", "code": "SE"}},
+
+    {"model": "travel.localplace", "pk": 55, "fields": {"country": "Denmark", "city": "Copenhagen", "code": "DK"}},
+    {"model": "travel.localplace", "pk": 56, "fields": {"country": "Denmark", "city": "Aarhus", "code": "DK"}},
+    {"model": "travel.localplace", "pk": 57, "fields": {"country": "Denmark", "city": "Odense", "code": "DK"}},
+
+    {"model": "travel.localplace", "pk": 58, "fields": {"country": "Norway", "city": "Oslo", "code": "NO"}},
+    {"model": "travel.localplace", "pk": 59, "fields": {"country": "Norway", "city": "Bergen", "code": "NO"}},
+    {"model": "travel.localplace", "pk": 60, "fields": {"country": "Norway", "city": "Trondheim", "code": "NO"}},
+
+    {"model": "travel.localplace", "pk": 61, "fields": {"country": "Finland", "city": "Helsinki", "code": "FI"}},
+    {"model": "travel.localplace", "pk": 62, "fields": {"country": "Finland", "city": "Espoo", "code": "FI"}},
+    {"model": "travel.localplace", "pk": 63, "fields": {"country": "Finland", "city": "Tampere", "code": "FI"}},
+
+    {"model": "travel.localplace", "pk": 64, "fields": {"country": "Iceland", "city": "Reykjavik", "code": "IS"}},
+    {"model": "travel.localplace", "pk": 65, "fields": {"country": "Iceland", "city": "Akureyri", "code": "IS"}},
+    {"model": "travel.localplace", "pk": 66, "fields": {"country": "Iceland", "city": "Hafnarfjordur", "code": "IS"}},
+    
+    {"model": "travel.localplace", "pk": 67, "fields": {"country": "United States", "city": "Miami", "code": "US"}},
+    {"model": "travel.localplace", "pk": 68, "fields": {"country": "United States", "city": "Atlanta", "code": "US"}},
+    {"model": "travel.localplace", "pk": 69, "fields": {"country": "United States", "city": "New Orleans", "code": "US"}}
+]
