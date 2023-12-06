@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import BlogPost
+from .models import BlogPost, UserProfile, LocalPlace
 
 
 class BlogPostSerializer(serializers.ModelSerializer):
@@ -18,4 +18,14 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'username', 'email']
         
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = '__all__'
         
+        
+class LocalPlaceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LocalPlace
+        fields = '__all__'

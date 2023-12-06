@@ -7,8 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
 from django.core.mail import send_mail, BadHeaderError, EmailMessage
 from django.conf import settings
-from .models import BlogPost
-from .serializers import BlogPostSerializer, UserSerializer
+from .models import BlogPost, UserProfile, LocalPlace
+from .serializers import BlogPostSerializer, UserSerializer, UserProfileSerializer, LocalPlaceSerializer
 
 
 class BlogPostViewSet(viewsets.ModelViewSet):
@@ -33,6 +33,21 @@ class UserViewSet(viewsets.ModelViewSet):
     def get(self, request):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
+    
+
+class UserProfileViewSet(viewsets.ModelViewSet):
+    queryset = UserProfile.objects.all()
+    serializer_class = UserProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+        
+
+class LocalPlaceViewSet(viewsets.ModelViewSet):
+    queryset = LocalPlace.objects.all()
+    serializer_class = LocalPlaceSerializer
+    permission_classes = [permissions.AllowAny]
     
     
 class GroupViewSet(viewsets.ModelViewSet):
