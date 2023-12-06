@@ -26,6 +26,9 @@ class LocalPlace(models.Model):
     country = models.CharField(max_length=100)
     city = models.CharField(max_length=100, blank=True, null=True)
     code = models.CharField(max_length=2)
-    
+    population = models.IntegerField(null=True, blank=True)
+    attractions = models.TextField(blank=True)
+    nature_views = models.TextField(blank=True)
+
     def __str__(self):
         return self.country
