@@ -42,3 +42,14 @@ export const getEmailData = async (data) => {
         throw error;
     }
 };
+
+export const fetchProfileData = async (userId) => {
+    try {
+        const response = await api.get('profile/${userId}/');
+        console.log('Profile data fetched succesful', response.data);
+        return response.data;
+    } catch (error) {
+        console.log('Error fetching profile data:', error);
+        throw error;
+    }
+};

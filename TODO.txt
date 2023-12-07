@@ -95,3 +95,6 @@ Started working on destinations and profile page backend viewsets.
 Added update_countries.py file which fetches country data from the REST countries API.
 Added OpenTripMap api in opentrip branch, instead going to implement REST countries in backend and  
      OpenTripMap in frontend as it takes up too much db space.
+
+07-12-2023:
+Started development of Profile.jsx component, implementing REST countries API aswell as other parameters.
