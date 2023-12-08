@@ -98,3 +98,6 @@ Added OpenTripMap api in opentrip branch, instead going to implement REST countr
 
 07-12-2023:
 Started development of Profile.jsx component, implementing REST countries API aswell as other parameters.
+
+08-12-2023:
+Profile.jsx still incorrect, right now displays hardcoded profile instead of dynamically.
