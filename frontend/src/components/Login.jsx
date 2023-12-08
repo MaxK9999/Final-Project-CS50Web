@@ -18,7 +18,7 @@ const Login = () => {
         try {
             const response = await api.post("login/", loginData);
             console.log("Login successful:", response.data);
-            navigate("/");
+            navigate("/profile");
             login();
         } catch (error) {
             console.log("Login failed:", error.response.data);

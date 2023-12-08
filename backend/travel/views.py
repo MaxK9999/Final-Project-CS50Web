@@ -40,7 +40,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
-    
+     
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
          
@@ -58,13 +58,11 @@ class LocalPlaceViewSet(viewsets.ModelViewSet):
         grouped_results = defaultdict(list)
         for entry in serialized_data:
             country = entry["country"]
-            city = entry["city"]
-            grouped_results[country].append(city)
-        
+            grouped_results[country].append(None)  # No need to append cities, just use None
+            
         # Converting defaultdict to dict
-        grouped_results = [{"country": country, "cities": cities} for country, cities in grouped_results.items()]
+        grouped_results = [{"country": country} for country in grouped_results.keys()]
         return Response(grouped_results)
-    
     
 class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()

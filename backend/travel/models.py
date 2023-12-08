@@ -21,6 +21,9 @@ class UserProfile(models.Model):
     visited_countries = models.ManyToManyField('LocalPlace', related_name='visited_users', blank=True)
     interests = models.ManyToManyField('LocalPlace', related_name='interests_users', blank=True)
     
+    def __str__(self):
+        return self.user.username
+    
     
 class LocalPlace(models.Model):
     country = models.CharField(max_length=100)

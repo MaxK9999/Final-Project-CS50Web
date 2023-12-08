@@ -42,11 +42,9 @@ class UserProfileSerializer(serializers.ModelSerializer):
             country = entry['country']
             if country not in grouped_visited_countries:
                 grouped_visited_countries[country] = []
-            if entry['city']:
-                grouped_visited_countries[country].append(entry['city'])
 
         # Update representation with grouped visited_countries
-        representation['visited_countries'] = [{'country': country, 'cities': cities} for country, cities in grouped_visited_countries.items()]
+        representation['visited_countries'] = [{'country': country} for country in grouped_visited_countries.keys()]
 
         # Similar grouping for interests
         grouped_interests = {}
@@ -54,10 +52,8 @@ class UserProfileSerializer(serializers.ModelSerializer):
             country = entry['country']
             if country not in grouped_interests:
                 grouped_interests[country] = []
-            if entry['city']:
-                grouped_interests[country].append(entry['city'])
 
         # Update representation with grouped interests
-        representation['interests'] = [{'country': country, 'cities': cities} for country, cities in grouped_interests.items()]
+        representation['interests'] = [{'country': country} for country in grouped_interests.keys()]
 
         return representation

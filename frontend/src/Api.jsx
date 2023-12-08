@@ -45,7 +45,7 @@ export const getEmailData = async (data) => {
 
 export const fetchProfileData = async (userId) => {
     try {
-        const response = await api.get('profile/${userId}/');
+        const response = await api.get(`userprofile?user_id=${userId}`);
         console.log('Profile data fetched succesful', response.data);
         return response.data;
     } catch (error) {
