@@ -16,7 +16,7 @@ const Profile = ({ userId }) => {
                 // Fetch the profile data for the authenticated user
                 if (isAuthenticated) {
                     const authUser = await fetchProfileData();
-                    setProfileData(authUser.results[0]);
+                    setProfileData(authUser.results[0]); // This is bugged, only works if userId is specified in array
                 }
             } catch (error) {
                 console.error('Error fetching profile data:', error);

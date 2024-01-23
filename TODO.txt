@@ -98,3 +98,12 @@ Started development of Profile.jsx component, implementing REST countries API as
 
 08-12-2023:
 Profile.jsx still incorrect, right now displays hardcoded profile instead of dynamically.
+
+||||||||||||
+||||||||||||
+SHORT HIATUS
+||||||||||||
+||||||||||||
+
+23-01-2024:
+First time poking in at project again, tried overseeing bug in Profile.jsx with no luck.

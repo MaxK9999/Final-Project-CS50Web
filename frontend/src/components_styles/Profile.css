@@ -23,3 +23,9 @@
     width: 200px;
     height: 200px;
 }
+
+.countries {
+    display: flex;
+    flex-direction: column;
+    
+}
