@@ -107,3 +107,6 @@ SHORT HIATUS
 
 23-01-2024:
 First time poking in at project again, tried overseeing bug in Profile.jsx with no luck.
+
+29-01-2024:
+Possibly found the profile.jsx bug, userId is possibly never passed along (as seen in Api.jsx) which means it should be specified first.`

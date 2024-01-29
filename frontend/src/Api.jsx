@@ -45,7 +45,7 @@ export const getEmailData = async (data) => {
 
 export const fetchProfileData = async (userId) => {
     try {
-        const response = await api.get(`userprofile?user_id=${userId}`);
+        const response = await api.get(`userprofile?user_id=${userId}`); // profile.jsx bug is probably in here as userId is never specified
         console.log('Profile data fetched succesful', response.data);
         return response.data;
     } catch (error) {
