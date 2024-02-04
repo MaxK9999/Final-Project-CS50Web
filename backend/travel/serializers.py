@@ -28,10 +28,11 @@ class LocalPlaceSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     visited_countries = LocalPlaceSerializer(many=True, read_only=True)
     interests = LocalPlaceSerializer(many=True, read_only=True)
+    user_username = serializers.CharField(source='user.username', read_only=True)
 
     class Meta:
         model = UserProfile
-        fields = ['user', 'bio', 'location', 'birth_date', 'profile_picture', 'visited_countries', 'interests']
+        fields = ['user_username', 'bio', 'location', 'birth_date', 'profile_picture', 'visited_countries', 'interests']
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)

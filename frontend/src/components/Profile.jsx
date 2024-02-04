@@ -26,12 +26,17 @@ const Profile = () => {
     }, [isAuthenticated]);
 
     return (
-        <div>
+        <section>
             <Heading text="Profile" />
             {isAuthenticated && profileData && (
-                <div>
-                    <h2>{profileData.user.username}'s Profile</h2>
-                    <div>
+                <div className="profile-page">
+                    <div className="profile-header">
+                        <h2>{profileData.user_username}'s profile</h2>
+                        <img
+                            className="profile-picture"
+                            src={profileData.profile_picture}
+                            alt=""
+                        />
                         <p>Bio: {profileData.bio}</p>
                         <p>Location: {profileData.location}</p>
                         <p>Birth Date: {profileData.birth_date}</p>
@@ -40,7 +45,7 @@ const Profile = () => {
                 </div>
             )}
             {!isAuthenticated && <p>Please log in to view your profile.</p>}
-        </div>
+        </section>
     );
 };
 

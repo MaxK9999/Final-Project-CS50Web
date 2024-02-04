@@ -22,7 +22,7 @@ class UserProfile(models.Model):
     interests = models.ManyToManyField('LocalPlace', related_name='interests_users', blank=True)
     
     def __str__(self):
-        return self.user.username
+        return f"{self.user.username}'s Profile"
     
     
 class LocalPlace(models.Model):
