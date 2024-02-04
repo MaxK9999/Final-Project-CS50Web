@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 
 const ProfileForm = ({ onSubmit, initialData }) => {
   const [username, setUsername] = useState(initialData.user_username || "");
-  const [email, setEmail] = useState(initialData.email || "");
-  const [password, setPassword] = useState("");
   const [bio, setBio] = useState(initialData.bio || "");
   const [location, setLocation] = useState(initialData.location || "");
   const [birth_date, setBirthDate] = useState(initialData.birth_date || "");
@@ -30,14 +28,6 @@ const ProfileForm = ({ onSubmit, initialData }) => {
           type="text"
           value={username}
           onChange={(event) => setUsername(event.target.value)}
-        />
-      </label>
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
         />
       </label>
       <label>
