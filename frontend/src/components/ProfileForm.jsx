@@ -11,8 +11,6 @@ const ProfileForm = ({ onSubmit, initialData }) => {
     event.preventDefault();
     onSubmit({
       username,
-      email,
-      password,
       bio,
       location,
       birth_date,
