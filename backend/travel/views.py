@@ -34,15 +34,6 @@ class UserViewSet(viewsets.ModelViewSet):
     def get(self, request):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
-    
-
-class UserProfileViewSet(viewsets.ModelViewSet):
-    queryset = UserProfile.objects.all()
-    serializer_class = UserProfileSerializer
-    permission_classes = [permissions.IsAuthenticated]
-     
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
          
 
 class LocalPlaceViewSet(viewsets.ModelViewSet):
@@ -150,3 +141,12 @@ class EmailHandler(APIView):
                 return Response("Invalid header found.", status=status.HTTP_400_BAD_REQUEST)
             
         return Response("Make sure all fields are entered and valid.", status=status.HTTP_400_BAD_REQUEST)
+    
+    
+class UserProfileView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request, *args, **kwargs):
+        user_profile = request.user.userprofile
+        serializer = UserProfileSerializer(user_profile)
+        return Response(serializer.data)
