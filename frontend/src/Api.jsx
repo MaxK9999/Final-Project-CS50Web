@@ -53,3 +53,27 @@ export const fetchProfileData = async () => {
         throw error;
     }
 };
+
+export const updateProfile = async (formData) => {
+    try {
+        const csrftoken = getCookie('csrftoken');
+        const data = new FormData();
+        
+        // Append each form field to the FormData object
+        for (const key in formData) {
+            data.append(key, formData[key]);
+        }
+
+        const response = await api.patch("userprofile/", data, {
+            headers: {
+                'X-CSRFToken': csrftoken
+            },
+            withCredentials: true
+        });
+        console.log("Profile updated successfully:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Error updating profile:", error);
+        throw error;
+    }
+};

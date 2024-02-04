@@ -150,3 +150,12 @@ class UserProfileView(APIView):
         user_profile = request.user.userprofile
         serializer = UserProfileSerializer(user_profile)
         return Response(serializer.data)
+    
+    def patch(self, request, *args, **kwargs):
+        user_profile = request.user.userprofile
+        serializer = UserProfileSerializer(user_profile, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        print (serializer.errors)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

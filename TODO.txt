@@ -110,3 +110,11 @@ First time poking in at project again, tried overseeing bug in Profile.jsx with 
 
 29-01-2024:
 Possibly found the profile.jsx bug, userId is possibly never passed along (as seen in Api.jsx) which means it should be specified first.`
+
+04-02-2024:
+Fixed profile.jsx bug in frontend and backend, profiles now load correctly according to logged in user. Bug lied in backend primarily
+due to not loading the profiles correctly, used *args **kwargs to setup dynamic loading instead.
+
+   - new bug surfaced in profile.jsx where profile pictures for some reason won't load eventhough path is correct and terminal
+     aswell as console correctly show path to the profile pictures in the API (honestly lost on this one).
+   - added new and improved TestCase for above mentioned view.

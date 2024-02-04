@@ -5,7 +5,8 @@ from django.core.mail import outbox
 from django.core import mail
 from rest_framework.test import APIClient
 from rest_framework import status
-from .models import BlogPost
+from .models import BlogPost, UserProfile
+from .serializers import UserProfileSerializer
 
 
 class BlogPostViewSetTest(TestCase):
@@ -100,15 +101,44 @@ class EmailHandlerTest(TestCase):
         self.assertEqual(len(mail.outbox), 0) 
         
         
+
 class UserProfileViewTest(TestCase):
     def setUp(self):
-        self.client = APIClient()
+        # Create a user for testing
         self.user = User.objects.create_user(username='testuser', password='testpassword')
-    
-    def test_get_user_profile_200(self):
+
+        # Create a user profile for the test user
+        self.user_profile = UserProfile.objects.create(user=self.user, bio='Test Bio', location='Test Location')
+
+        # Set up the API client and authenticate the user
+        self.client = APIClient()
         self.client.force_authenticate(user=self.user)
-        response = self.client.get('/api/userprofile/')
+
+    def test_get_user_profile(self):
+        # Test GET request to the UserProfileView
+        url = '/api/userprofile/'
+        response = self.client.get(url)
+
+        # Check that the response status code is 200 OK
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        # Check that the returned data matches the user profile data
+        expected_data = UserProfileSerializer(self.user_profile).data
+        self.assertEqual(response.data, expected_data)
+
+    def test_patch_user_profile(self):
+        # Test PATCH request to update the user profile
+        url = '/api/userprofile/'
+        updated_data = {'bio': 'Updated Bio', 'location': 'Updated Location'}
+        response = self.client.patch(url, updated_data, format='json')
+
+        # Check that the response status code is 200 OK
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        # Check that the user profile data has been updated
+        updated_user_profile = UserProfile.objects.get(user=self.user)
+        self.assertEqual(updated_user_profile.bio, updated_data['bio'])
+        self.assertEqual(updated_user_profile.location, updated_data['location'])
         
         
 class LocalPlaceViewTest(TestCase):
