@@ -48,7 +48,7 @@ const Profile = () => {
           <div className="profile-header">
             <h2>{profileData.user_username}'s profile</h2>
             {editing ? (
-              <ProfileForm onSubmit={handleFormSubmit} initialData={profileData} />
+                <ProfileForm onSubmit={handleFormSubmit} initialData={profileData} />
             ) : (
               <div>
                 <img

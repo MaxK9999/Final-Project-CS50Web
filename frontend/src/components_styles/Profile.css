@@ -18,6 +18,23 @@
     width: 50vw;
 }
 
+.profile-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-label {
+    margin-top: 2vh;
+}
+
+.profile-label .profile-textarea {
+    vertical-align: top;
+    border: none;
+    resize: none;
+    height: 10vh;
+    width: 20vw;
+}
+
 .profile-picture {
     border-radius: 50%;
     width: 200px;
