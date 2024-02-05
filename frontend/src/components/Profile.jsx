@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Heading from "./Heading";
 import ProfileForm from "./ProfileForm";
 import "../components_styles/Heading.css";
@@ -11,7 +11,7 @@ const Profile = () => {
   const [profileData, setProfileData] = useState(null);
   const [editing, setEditing] = useState(false);
 
-  const loadProfileData = async () => {
+  const loadProfileData = useCallback(async () => {
     try {
       if (isAuthenticated) {
         const data = await fetchProfileData();
@@ -20,11 +20,15 @@ const Profile = () => {
     } catch (error) {
       console.error("Error fetching profile data:", error);
     }
-  };
+  }, [isAuthenticated]);
 
   useEffect(() => {
-    loadProfileData();
-  }, [isAuthenticated]);
+    const fetchData = async () => {
+      await loadProfileData();
+    };
+
+    fetchData();
+  }, [loadProfileData]);
 
   const handleFormSubmit = async (formData) => {
     try {
