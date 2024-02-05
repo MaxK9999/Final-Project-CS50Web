@@ -59,7 +59,8 @@ const Profile = () => {
                 <p>Bio: {profileData.bio}</p>
                 <p>Location: {profileData.location}</p>
                 <p>Birth Date: {profileData.birth_date}</p>
-                <button onClick={() => setEditing(true)}>Edit Profile</button>
+                
+                <button className="login-button" onClick={() => setEditing(true)}>Edit Profile</button>
               </div>
             )}
           </div>

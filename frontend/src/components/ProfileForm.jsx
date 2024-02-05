@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const ProfileForm = ({ onSubmit, initialData }) => {
-  const [username, setUsername] = useState(initialData.user_username || "");
   const [bio, setBio] = useState(initialData.bio || "");
   const [location, setLocation] = useState(initialData.location || "");
   const [birth_date, setBirthDate] = useState(initialData.birth_date || "");
@@ -10,7 +9,6 @@ const ProfileForm = ({ onSubmit, initialData }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     onSubmit({
-      username,
       bio,
       location,
       birth_date,
@@ -20,14 +18,6 @@ const ProfileForm = ({ onSubmit, initialData }) => {
 
   return (
     <form onSubmit={handleSubmit} encType="multipart/form-data">
-      <label>
-        Username:
-        <input
-          type="text"
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
-        />
-      </label>
       <label>
         Bio:
         <textarea

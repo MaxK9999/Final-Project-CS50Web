@@ -118,3 +118,6 @@ due to not loading the profiles correctly, used *args **kwargs to setup dynamic 
    - new bug surfaced in profile.jsx where profile pictures for some reason won't load eventhough path is correct and terminal
      aswell as console correctly show path to the profile pictures in the API (honestly lost on this one).
    - added new and improved TestCase for above mentioned view.
+
+05-02-2024:
+Decided to use Leaflet for the frontend map on user's profilepage in order to display countries and interests.
