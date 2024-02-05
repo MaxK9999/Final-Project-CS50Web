@@ -45,7 +45,11 @@ const ProfileForm = ({ onSubmit, initialData }) => {
                 onChange={(event) => setBio(event.target.value)}
               />
               <button onClick={() => setShowBioModal(false)} className="close-modal">
-                Close Modal
+                <div class="outer">
+                  <div class="inner">
+                    <label class="label">Back</label>
+                  </div>
+                </div>
               </button>
             </div>
           </Modal>
@@ -78,7 +82,8 @@ const ProfileForm = ({ onSubmit, initialData }) => {
           />
         </label>
       </div>
-      <button type="submit">Submit</button>
+      <button className="login-button" type="submit">Save Changes</button>
+      <button className="submit" type="button" onClick={onSubmit}>Cancel</button>
     </form>
   );
 };
