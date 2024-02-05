@@ -29,10 +29,18 @@
 
 .profile-label .profile-textarea {
     vertical-align: top;
+    margin-left: 1vw;
     border: none;
+    border-radius: 20px;
     resize: none;
-    height: 10vh;
-    width: 20vw;
+    height:80px;
+    width: 200px;
+}
+
+.profile-input {
+    border-bottom: 1px solid #272525;
+    padding: 10px;
+    margin-top: 10px;
 }
 
 .profile-picture {

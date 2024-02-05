@@ -30,6 +30,7 @@ const ProfileForm = ({ onSubmit, initialData }) => {
         <label className="profile-label">
           Location:
           <input
+            className="profile-input"
             type="text"
             value={location}
             onChange={(event) => setLocation(event.target.value)}
@@ -38,6 +39,7 @@ const ProfileForm = ({ onSubmit, initialData }) => {
         <label className="profile-label">
           Birth Date:
           <input
+            className="profile-input"
             type="date"
             value={birth_date}
             onChange={(event) => setBirthDate(event.target.value)}
@@ -46,6 +48,7 @@ const ProfileForm = ({ onSubmit, initialData }) => {
         <label className="profile-label">
           Profile Picture:
           <input
+            className="profile-input"
             type="file"
             onChange={(event) => setProfilePicture(event.target.files[0])}
           />
