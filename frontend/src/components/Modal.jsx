@@ -4,10 +4,6 @@ import "../components_styles/Modal.css";
 const Modal = ({ children }) => {
   const [modal, setModal] = useState(true);
 
-  const toggleModal = () => {
-    setModal(!modal);
-  };
-
   const handleOverlayClick = (event) => {
     // Check if the click is directly on the overlay (not on its children)
     if (event.target.classList.contains("overlay")) {
