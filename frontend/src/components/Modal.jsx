@@ -1,13 +1,19 @@
 import React, { useState } from "react";
-import "../components_styles/Modal.css";	
+import "../components_styles/Modal.css";
 
-export default function Modal() {
-
-  const [modal, setModal] = useState(false);
+const Modal = ({ children }) => {
+  const [modal, setModal] = useState(true);
 
   const toggleModal = () => {
     setModal(!modal);
-  }
+  };
+
+  const handleOverlayClick = (event) => {
+    // Check if the click is directly on the overlay (not on its children)
+    if (event.target.classList.contains("overlay")) {
+      setModal(false);
+    }
+  };
 
   if (modal) {
     document.body.classList.add("active-modal");
@@ -17,24 +23,13 @@ export default function Modal() {
 
   return (
     <>
-      <button onClick={toggleModal} className="btn-modal">
-        Open Modal
-      </button>
-
-      {modal && (
-        <div className="modal">
-          <div onClick={toggleModal} className="overlay"></div>
-          <div className="modal-content">
-            <h2>Modal Title</h2>
-
-            {/* textarea content should go here */}
-
-            <button onClick={toggleModal} className="close-modal">
-              Close Modal
-            </button>
-          </div>
-        </div>
-      )}
+      <div onClick={handleOverlayClick} className="overlay"></div>
+      <div className="modal">
+        {children}
+      </div>
     </>
-  )
+  );
 };
+
+export default Modal;
+

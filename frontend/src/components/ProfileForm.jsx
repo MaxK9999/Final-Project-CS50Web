@@ -1,10 +1,16 @@
 import React, { useState } from "react";
+import Modal from "./Modal";
 
 const ProfileForm = ({ onSubmit, initialData }) => {
   const [bio, setBio] = useState(initialData.bio || "");
   const [location, setLocation] = useState(initialData.location || "");
   const [birth_date, setBirthDate] = useState(initialData.birth_date || "");
   const [profile_picture, setProfilePicture] = useState("");
+  const [showBioModal, setShowBioModal] = useState(false);
+
+  const toggleBioModal = () => {
+    setShowBioModal(!showBioModal);
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,9 +30,27 @@ const ProfileForm = ({ onSubmit, initialData }) => {
           <textarea
             className="profile-textarea"
             value={bio}
-            onChange={(event) => setBio(event.target.value)}
+            onClick={toggleBioModal}
           />
         </label>
+        
+        {/* Bio Modal */}
+        {showBioModal && (
+          <Modal>
+            <div className="modal-content">
+              <h2>Edit Bio</h2>
+              <textarea
+                value={bio}
+                className="modal-textarea"
+                onChange={(event) => setBio(event.target.value)}
+              />
+              <button onClick={() => setShowBioModal(false)} className="close-modal">
+                Close Modal
+              </button>
+            </div>
+          </Modal>
+        )}
+
         <label className="profile-label">
           Location:
           <input
