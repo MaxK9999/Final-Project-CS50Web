@@ -56,7 +56,7 @@ const Profile = () => {
             ) : (
               <div>
                 <img
-                  src={profileData.profile_picture}
+                  src={`http://localhost:8000${profileData.profile_picture}`} /* change link when site goes live */
                   className="profile-picture"
                   alt=""
                 />
