@@ -3,12 +3,11 @@ from rest_framework.authentication import SessionAuthentication
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib.auth.models import User, Group
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
-from django.core.mail import send_mail, BadHeaderError, EmailMessage
+from django.core.mail import BadHeaderError, EmailMessage
 from django.conf import settings
 from collections import defaultdict
-from .models import BlogPost, UserProfile, LocalPlace
+from .models import BlogPost, LocalPlace
 from .serializers import BlogPostSerializer, UserSerializer, UserProfileSerializer, LocalPlaceSerializer
 
 

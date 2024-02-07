@@ -7,6 +7,8 @@ const ProfileForm = ({ onSubmit, initialData }) => {
   const [bio, setBio] = useState(initialData.bio || "");
   const [location, setLocation] = useState(initialData.location || "");
   const [birth_date, setBirthDate] = useState(initialData.birth_date || "");
+  //const [visited_countries, setVisitedCountries] = useState(initialData.visited_countries || "");      uncomment when map API is ready
+  //const [interests, setInterests] = useState(initialData.interests || "");
   const [profile_picture, setProfilePicture] = useState("");
   const [showBioModal, setShowBioModal] = useState(false);
 
@@ -86,6 +88,9 @@ const ProfileForm = ({ onSubmit, initialData }) => {
           />
           Select file
         </label>
+
+        {/* Insert countries visited and interests via map here */}
+
       </div>
       <button className="login-button" type="submit">Save Changes</button>
       <button className="submit" type="button" onClick={onSubmit}>Cancel</button>

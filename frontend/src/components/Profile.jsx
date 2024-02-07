@@ -63,10 +63,20 @@ const Profile = () => {
                 <p>Bio: {profileData.bio}</p>
                 <p>Location: {profileData.location}</p>
                 <p>Birth Date: {profileData.birth_date}</p>
-                
+                <div className="countries">
+                  <p>
+                      Countries Visited: {profileData.visited_countries.map(country => country.country).join(", ")}
+                  </p>
+                  <p>
+                      Interested in visiting: {profileData.interests.map(country => country.country).join(", ")}
+                  </p>
+                </div>
                 <button className="login-button" onClick={() => setEditing(true)}>Edit Profile</button>
               </div>
             )}
+          </div>
+          
+          <div className="profile-body">
           </div>
         </div>
       )}

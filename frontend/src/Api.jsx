@@ -78,3 +78,13 @@ export const updateProfile = async (formData) => {
     }
 };
 
+export const getLocalPlace = async () => {
+    try {
+        const response = await api.get("localplace/");
+        console.log("Local places fetched successfully:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching local places:", error);
+        throw error;
+    }
+};
