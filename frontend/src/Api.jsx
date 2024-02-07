@@ -77,3 +77,4 @@ export const updateProfile = async (formData) => {
         throw error;
     }
 };
+

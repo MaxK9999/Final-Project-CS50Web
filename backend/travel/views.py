@@ -38,22 +38,27 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class LocalPlaceViewSet(viewsets.ModelViewSet):
     queryset = LocalPlace.objects.all()
+
     serializer_class = LocalPlaceSerializer
     permission_classes = [permissions.AllowAny]
     
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset())
         serialized_data = LocalPlaceSerializer(queryset, many=True).data
-        
+
         # Grouping logic of country names
         grouped_results = defaultdict(list)
         for entry in serialized_data:
             country = entry["country"]
-            grouped_results[country].append(None)  # No need to append cities, just use None
-            
-        # Converting defaultdict to dict
-        grouped_results = [{"country": country} for country in grouped_results.keys()]
+            grouped_results[country].append(None)
+
+        # Sorting the countries alphabetically
+        sorted_countries = sorted(grouped_results.keys())
+
+        # Converting sorted countries to the desired response format
+        grouped_results = [{"country": country} for country in sorted_countries]
         return Response(grouped_results)
+    
     
 class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
