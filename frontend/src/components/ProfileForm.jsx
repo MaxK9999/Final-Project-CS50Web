@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faImage } from "@fortawesome/free-solid-svg-icons";
 
 const ProfileForm = ({ onSubmit, initialData }) => {
   const [bio, setBio] = useState(initialData.bio || "");
@@ -75,11 +77,14 @@ const ProfileForm = ({ onSubmit, initialData }) => {
         </label>
         <label className="profile-label">
           Profile Picture:
+          <FontAwesomeIcon icon={faImage} className="profile-icon" />
           <input
-            className="profile-input"
+            className="profile-input-image"
             type="file"
+            accept="image/*"
             onChange={(event) => setProfilePicture(event.target.files[0])}
           />
+          Select file
         </label>
       </div>
       <button className="login-button" type="submit">Save Changes</button>

@@ -15,7 +15,7 @@
     flex-direction: column;
     border-radius: 20px;
     background-color: antiquewhite;
-    padding: 50px;
+    padding: 60px;
     width: 50vw;
 }
 
@@ -33,7 +33,6 @@
     vertical-align: top;
     margin-left: 1vw;
     border: none;
-    border-radius: 20px;
     resize: none;
     height:50px;
     width: 200px;
@@ -43,6 +42,24 @@
     border-bottom: 1px solid #272525;
     padding: 10px;
     margin-top: 10px;
+    width: 250px;
+}
+
+.profile-icon {
+    margin-left: 10px;
+    font-size: 25px;
+    color: rgba(23, 24, 23, 0.5);
+    cursor: pointer;
+
+    &:hover {
+        color: #272525;
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+}
+
+.profile-input-image {
+    border-bottom: none;
+    display: none;
 }
 
 .profile-picture {
@@ -54,5 +71,11 @@
 .countries {
     display: flex;
     flex-direction: column;
+}
+
+@media screen and (max-width: 660px) {
+    .profile-input {
+        margin-left: -20px;
+    }
     
 }
