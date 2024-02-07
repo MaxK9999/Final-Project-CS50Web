@@ -125,3 +125,5 @@ Made Modal.jsx component for rendering dynamic modal popups, integrated it withi
 
 07-02-2024: 
 Minor UX tweaks for profile page.
+Fixed profile picture bug.
+Alphabetically sorted localplace.
