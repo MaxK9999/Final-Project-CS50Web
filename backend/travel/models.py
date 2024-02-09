@@ -18,6 +18,7 @@ class UserProfile(models.Model):
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
     profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
+    profile_background = models.ImageField(upload_to='profile_backgrounds/', blank=True, null=True)
     visited_countries = models.ManyToManyField('LocalPlace', related_name='visited_users', blank=True)
     interests = models.ManyToManyField('LocalPlace', related_name='interests_users', blank=True)
     

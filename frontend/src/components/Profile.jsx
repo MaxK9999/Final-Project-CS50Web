@@ -50,19 +50,28 @@ const Profile = () => {
       {isAuthenticated && profileData && (
         <div className="profile-page">
           <div className="profile-header">
-            <h2>{profileData.user_username}'s profile</h2>
+            <h1>{profileData.user_username}'s profile</h1>
             {editing ? (
                 <ProfileForm onSubmit={handleFormSubmit} initialData={profileData} />
             ) : (
               <div>
-                <img
-                  src={`http://localhost:8000${profileData.profile_picture}`} /* change link when site goes live */
-                  className="profile-picture"
-                  alt=""
-                />
-                <p>Bio: {profileData.bio}</p>
-                <p>Location: {profileData.location}</p>
-                <p>Birth Date: {profileData.birth_date}</p>
+                <div className="profile-background">
+                  <img 
+                    src={`http://localhost:8000${profileData.profile_background}`}
+                    className="profile-background-image"
+                    alt=""
+                  />
+                  <img
+                    src={`http://localhost:8000${profileData.profile_picture}`} /* change link when site goes live */
+                    className="profile-picture"
+                    alt=""
+                  />
+                </div>
+                <div className="profile-secondary">
+                  <h4 className="profile-bio">Bio: {profileData.bio}</h4>
+                  <h5>Location: {profileData.location}</h5>
+                  <h5>Birth Date: {profileData.birth_date}</h5>
+                </div>
                 <div className="countries">
                   <p>
                       Countries Visited: {profileData.visited_countries.map(country => country.country).join(", ")}

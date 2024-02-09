@@ -127,3 +127,7 @@ Made Modal.jsx component for rendering dynamic modal popups, integrated it withi
 Minor UX tweaks for profile page.
 Fixed profile picture bug.
 Alphabetically sorted localplace.
+
+09-02-2024: 
+Added profile backround component, made some stylistic changes.
+Found profile_picture bug where on edit the profile picture sets itself to null for some reason.
