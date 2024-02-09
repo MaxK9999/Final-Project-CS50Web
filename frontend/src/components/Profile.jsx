@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import Modal from "./Modal";
 import Heading from "./Heading";
 import ProfileForm from "./ProfileForm";
 import "../components_styles/Heading.css";
@@ -10,6 +11,8 @@ const Profile = () => {
   const { isAuthenticated } = useAuth();
   const [profileData, setProfileData] = useState(null);
   const [editing, setEditing] = useState(false);
+  const [expandedBio, setExpandedBio] = useState(false);
+
 
   const loadProfileData = useCallback(async () => {
     try {
@@ -21,6 +24,7 @@ const Profile = () => {
       console.error("Error fetching profile data:", error);
     }
   }, [isAuthenticated]);
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,6 +48,10 @@ const Profile = () => {
     }
   };
 
+  const toggleExpandedBio = () => {
+    setExpandedBio(!expandedBio);
+  };
+
   return (
     <section>
       <Heading text="Profile" />
@@ -64,11 +72,41 @@ const Profile = () => {
                   <img
                     src={`http://localhost:8000${profileData.profile_picture}`} /* change link when site goes live */
                     className="profile-picture"
-                    alt=""
+                    alt={`http://localhost:8000/media/profile_pictures/default.jpg`}
                   />
                 </div>
+
                 <div className="profile-secondary">
-                  <h4 className="profile-bio">Bio: {profileData.bio}</h4>
+                <h4 className="profile-bio">
+                    Bio:{" "}
+                    {expandedBio && (
+                      <Modal>
+                        <div className="modal-content">
+                          <h4>{profileData.bio}</h4>
+                          <button className="close-modal" onClick={toggleExpandedBio}>
+                            <div className="outer">
+                              <div className="inner">
+                                <div className="label">Close</div>
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                      </Modal>
+                    )}
+                    {!expandedBio && (
+                      <>
+                        <span className="truncated-bio">
+                          {profileData.bio.length > 50
+                            ? profileData.bio.substring(0, 50) + "..."
+                            : profileData.bio}
+                        </span>
+                        <button className="btn-bio" onClick={toggleExpandedBio}>
+                          Read More
+                        </button>
+                      </>
+                    )}
+                  </h4>
+
                   <h5>Location: {profileData.location}</h5>
                   <h5>Birth Date: {profileData.birth_date}</h5>
                 </div>

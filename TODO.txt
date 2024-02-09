@@ -131,3 +131,5 @@ Alphabetically sorted localplace.
 09-02-2024: 
 Added profile backround component, made some stylistic changes.
 Found profile_picture bug where on edit the profile picture sets itself to null for some reason.
+Perhaps split profile and background picture updating to seperate component!!!
+Added bio Modal popup.
