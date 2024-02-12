@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImage } from "@fortawesome/free-solid-svg-icons";
 
 const ProfileForm = ({ onSubmit, initialData }) => {
   const [bio, setBio] = useState(initialData.bio || "");
@@ -9,7 +7,6 @@ const ProfileForm = ({ onSubmit, initialData }) => {
   const [birth_date, setBirthDate] = useState(initialData.birth_date || "");
   //const [visited_countries, setVisitedCountries] = useState(initialData.visited_countries || "");      uncomment when map API is ready
   //const [interests, setInterests] = useState(initialData.interests || "");
-  const [profile_picture, setProfilePicture] = useState("");
   const [showBioModal, setShowBioModal] = useState(false);
 
   const toggleBioModal = () => {
@@ -22,7 +19,6 @@ const ProfileForm = ({ onSubmit, initialData }) => {
       bio,
       location,
       birth_date,
-      profile_picture,
     });
   };
 
@@ -76,17 +72,6 @@ const ProfileForm = ({ onSubmit, initialData }) => {
             value={birth_date}
             onChange={(event) => setBirthDate(event.target.value)}
           />
-        </label>
-        <label className="profile-label">
-          Profile Picture:
-          <FontAwesomeIcon icon={faImage} className="profile-icon" />
-          <input
-            className="profile-input-image"
-            type="file"
-            accept="image/*"
-            onChange={(event) => setProfilePicture(event.target.files[0])}
-          />
-          Select file
         </label>
 
         {/* Insert countries visited and interests via map here */}

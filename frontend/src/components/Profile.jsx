@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Modal from "./Modal";
 import Heading from "./Heading";
 import ProfileForm from "./ProfileForm";
+//import PictureEditor from "./PictureEditor";
 import "../components_styles/Heading.css";
 import "../components_styles/Profile.css";
 import { fetchProfileData, updateProfile } from "../Api";
@@ -12,6 +13,9 @@ const Profile = () => {
   const [profileData, setProfileData] = useState(null);
   const [editing, setEditing] = useState(false);
   const [expandedBio, setExpandedBio] = useState(false);
+  const [expandedProfilePicture, setExpandedProfilePicture] = useState(false);
+  const [expandedProfileBackground, setExpandedProfileBackground] = useState(false);
+  //const [editingPicture, setEditingPicture] = useState(false);
 
 
   const loadProfileData = useCallback(async () => {
@@ -34,6 +38,7 @@ const Profile = () => {
     fetchData();
   }, [loadProfileData]);
 
+
   const handleFormSubmit = async (formData) => {
     try {
       await updateProfile(formData);
@@ -48,9 +53,15 @@ const Profile = () => {
     }
   };
 
+
   const toggleExpandedBio = () => {
     setExpandedBio(!expandedBio);
   };
+
+
+ // const handleEditPicture = () => {
+ //   setEditingPicture(true);
+
 
   return (
     <section>
@@ -64,16 +75,61 @@ const Profile = () => {
             ) : (
               <div>
                 <div className="profile-background">
+
+                  {/* --------------- Profile Background --------------------- */}
                   <img 
                     src={`http://localhost:8000${profileData.profile_background}`}
                     className="profile-background-image"
                     alt=""
+                    onClick={() => setExpandedProfileBackground(true)}
                   />
+                
+                  {expandedProfileBackground && (
+                    <Modal> 
+                      <div className="modal-content">
+                        <img
+                          src={`http://localhost:8000${profileData.profile_background}`}
+                          className="profile-background-image"
+                          alt=""
+                          onClick={() => setExpandedProfileBackground(false)}
+                        />
+                        <button className="close-modal" onClick={() => setExpandedProfileBackground(false)}>
+                          <div className="outer">
+                            <div className="inner">
+                              <div className="label">Close</div>
+                            </div>
+                          </div>
+                        </button>
+                      </div>
+                    </Modal>
+                  )}
+
+                  {/*---------------- Profile Picture ------------------------ */}
                   <img
                     src={`http://localhost:8000${profileData.profile_picture}`} /* change link when site goes live */
                     className="profile-picture"
                     alt={`http://localhost:8000/media/profile_pictures/default.jpg`}
+                    onClick={() => setExpandedProfilePicture(true)}
                   />
+                  {expandedProfilePicture && (
+                    <Modal>
+                      <div className="modal-content">
+                        <img
+                          src={`http://localhost:8000${profileData.profile_picture}`} /* change link when site goes live */
+                          className="profile-picture"
+                          alt={`http://localhost:8000/media/profile_pictures/default.jpg`}
+                          onClick={() => setExpandedProfilePicture(false)}
+                        />
+                        <button className="close-modal" onClick={() => setExpandedProfilePicture(false)}>
+                          <div className="outer">
+                            <div className="inner">
+                              <div className="label">Close</div>
+                            </div>
+                          </div>
+                        </button>
+                      </div>
+                    </Modal>
+                  )}
                 </div>
 
                 <div className="profile-secondary">

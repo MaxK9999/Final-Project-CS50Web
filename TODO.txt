@@ -137,3 +137,6 @@ Added profile backround component, made some stylistic changes.
 Found profile_picture bug where on edit the profile picture sets itself to null for some reason.
 Perhaps split profile and background picture updating to seperate component!!!
 Added bio Modal popup.
+
+12-02-2024:
+Started restructuring of profile page where profile_picture and profile_background can be updated by clicking on them.
