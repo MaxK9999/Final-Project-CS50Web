@@ -84,8 +84,8 @@
 }
 
 .profile-background-image-expanded {
-    width: 25%;
-    height: 25%;
+    width: 100%;
+    height: 50%;
 }
 
 .profile-picture {
@@ -108,7 +108,7 @@
 }
 
 .profile-picture-expanded {
-    width: 25%;
+    width: 50%;
     height: 25%;
 }
 

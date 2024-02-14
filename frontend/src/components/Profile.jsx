@@ -158,35 +158,35 @@ const Profile = () => {
 
                 <div className="profile-secondary">
                 <h4 className="profile-bio">
-                    Bio:{" "}
-                    {expandedBio && (
-                      <Modal>
-                        <div className="modal-content">
-                          <h4>{profileData.bio}</h4>
-                          <button className="close-modal" onClick={toggleExpandedBio}>
-                            <div className="outer">
-                              <div className="inner">
-                                <div className="label">Close</div>
-                              </div>
+                  Bio:{" "}
+                  {expandedBio && (
+                    <Modal>
+                      <div className="modal-content">
+                        <h2>Bio:</h2>
+                        <h4 style={{ whiteSpace: "pre-line" }}>{profileData.bio}</h4>
+                        <button className="close-modal" onClick={toggleExpandedBio}>
+                          <div className="outer">
+                            <div className="inner">
+                              <div className="label">Back</div>
                             </div>
-                          </button>
-                        </div>
-                      </Modal>
-                    )}
-                    {!expandedBio && (
-                      <>
-                        <span className="truncated-bio">
-                          {profileData.bio.length > 50
-                            ? profileData.bio.substring(0, 50) + "..."
-                            : profileData.bio}
-                        </span>
-                        <button className="btn-bio" onClick={toggleExpandedBio}>
-                          Read More
+                          </div>
                         </button>
-                      </>
-                    )}
-                  </h4>
-
+                      </div>
+                    </Modal>
+                  )}
+                  {!expandedBio && (
+                    <>
+                      <span className="truncated-bio">
+                        {profileData.bio.length > 50
+                          ? profileData.bio.substring(0, 50) + "..."
+                          : profileData.bio}
+                      </span>
+                      <button className="btn-bio" onClick={toggleExpandedBio}>
+                        Read More
+                      </button>
+                    </>
+                  )}
+                </h4>
                   <h5>Location: {profileData.location}</h5>
                   <h5>Birth Date: {profileData.birth_date}</h5>
                 </div>

@@ -1,0 +1,26 @@
+#picture-upload {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #ccc;
+    transition: all 0.3s ease-in-out;
+    font-weight: 600;
+
+    &:hover {
+        background-color: #ddd;
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+.fa-regular {
+    display: flex;
+    font: 30px/1em 'FontAwesome';
+    color: #272525;
+    justify-content: center;
+    margin-bottom: -20px;
+}

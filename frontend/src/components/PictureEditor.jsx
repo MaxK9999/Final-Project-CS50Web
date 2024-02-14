@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../components_styles/PictureEditor.css";
 
+
 const PictureEditor = ({ currentPicture, onSave, onCancel }) => {
     const [newPicture, setNewPicture] = useState(currentPicture);
 
@@ -15,9 +16,14 @@ const PictureEditor = ({ currentPicture, onSave, onCancel }) => {
 
     return (
         <div className="picture-editor">
-            <input type="file" onChange={handleChange} accept="image/*" />
-            <button onClick={handleSave}>Save</button>
-            <button onClick={onCancel}>Cancel</button>
+            <label htmlFor="picture-upload" className="custom-file-upload">
+                <i class="fa-regular fa-image"></i> <br />
+                    Upload
+                <input id="picture-upload" type="file" onChange={handleChange} accept="image/*" />
+            </label>
+            <br />
+            <button className="login-button" onClick={handleSave}>Save</button>
+            <button className="submit" onClick={onCancel}>Cancel</button>
         </div>
     );
 };
