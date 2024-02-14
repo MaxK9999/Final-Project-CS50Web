@@ -76,6 +76,16 @@
     width: 45vw;
     object-fit: cover;
     cursor: pointer;
+
+    &:hover {
+        opacity: 0.9;
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+.profile-background-image-expanded {
+    width: 25%;
+    height: 25%;
 }
 
 .profile-picture {
@@ -92,10 +102,14 @@
     cursor: pointer;
 
     &:hover {
-        background-color: #272525;
-        opacity: 0.6;
+        opacity: 0.9;
         transition: all 0.3s ease-in-out;
     }
+}
+
+.profile-picture-expanded {
+    width: 25%;
+    height: 25%;
 }
 
 .profile-secondary {

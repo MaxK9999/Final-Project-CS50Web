@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import Modal from "./Modal";
 import Heading from "./Heading";
 import ProfileForm from "./ProfileForm";
-//import PictureEditor from "./PictureEditor";
+import PictureEditor from "./PictureEditor";
 import "../components_styles/Heading.css";
 import "../components_styles/Profile.css";
 import { fetchProfileData, updateProfile } from "../Api";
@@ -13,9 +13,8 @@ const Profile = () => {
   const [profileData, setProfileData] = useState(null);
   const [editing, setEditing] = useState(false);
   const [expandedBio, setExpandedBio] = useState(false);
-  const [expandedProfilePicture, setExpandedProfilePicture] = useState(false);
-  const [expandedProfileBackground, setExpandedProfileBackground] = useState(false);
-  //const [editingPicture, setEditingPicture] = useState(false);
+  const [editingPicture, setEditingPicture] = useState(false);
+  const [editingBackground, setEditingBackground] = useState(false);
 
 
   const loadProfileData = useCallback(async () => {
@@ -59,8 +58,34 @@ const Profile = () => {
   };
 
 
- // const handleEditPicture = () => {
- //   setEditingPicture(true);
+  const handleEditPicture = () => {
+    setEditingPicture(true);
+  };
+
+
+  const handleEditBackground = () => {
+    setEditingBackground(true);
+  };
+
+
+  const handleSavePicture = (newPicture) => {
+    // Update picture
+    const formData = { profile_picture: newPicture };
+    updateProfile(formData).then(() => {
+      loadProfileData();
+      setEditingPicture(false);
+    });
+  };
+  
+
+  const handleSaveBackground = (newBackground) => {
+    // Update picture
+    const formData = { profile_background: newBackground };
+    updateProfile(formData).then(() => {
+      loadProfileData();
+      setEditingBackground(false);
+    });
+  };
 
 
   return (
@@ -82,25 +107,22 @@ const Profile = () => {
                       src={`http://localhost:8000${profileData.profile_background}`}
                       className="profile-background-image"
                       alt=""
-                      onClick={() => setExpandedProfileBackground(true)}
+                      onClick={handleEditBackground}
                     />
                   
-                    {expandedProfileBackground && (
+                    {editingBackground && (
                       <Modal> 
                         <div className="modal-content">
                           <img
                             src={`http://localhost:8000${profileData.profile_background}`}
-                            className="profile-background-image"
+                            className="profile-background-image-expanded"
                             alt=""
-                            onClick={() => setExpandedProfileBackground(false)}
                           />
-                          <button className="close-modal" onClick={() => setExpandedProfileBackground(false)}>
-                            <div className="outer">
-                              <div className="inner">
-                                <div className="label">Close</div>
-                              </div>
-                            </div>
-                          </button>
+                          <PictureEditor
+                            currentPicture={profileData.profile_background}
+                            onSave={handleSaveBackground}
+                            onCancel={() => setEditingBackground(false)}
+                          />
                         </div>
                       </Modal>
                     )}
@@ -109,28 +131,25 @@ const Profile = () => {
                   {/*---------------- Profile Picture ------------------------ */}
                   <div className="profile-picture-wrapper">
                     <img
-                      src={`http://localhost:8000${profileData.profile_picture}`} /* change link when site goes live */
+                      src={`http://localhost:8000${profileData.profile_picture}`}
                       className="profile-picture"
                       alt=""
-                      onClick={() => setExpandedProfilePicture(true)}
+                      onClick={handleEditPicture}
                     />
-                    <p className="profile-picture-text">Edit</p>
-                    {expandedProfilePicture && (
+
+                    {editingPicture && (
                       <Modal>
                         <div className="modal-content">
-                          <img
-                            src={`http://localhost:8000${profileData.profile_picture}`} /* change link when site goes live */
-                            className="profile-picture"
+                          <img 
+                            src={`http://localhost:8000${profileData.profile_picture}`}
+                            className="profile-picture-expanded"
                             alt=""
-                            onClick={() => setExpandedProfilePicture(false)}
+                            />
+                          <PictureEditor
+                            currentPicture={profileData.profile_picture}
+                            onSave={handleSavePicture}
+                            onCancel={() => setEditingPicture(false)}
                           />
-                          <button className="close-modal" onClick={() => setExpandedProfilePicture(false)}>
-                            <div className="outer">
-                              <div className="inner">
-                                <div className="label">Close</div>
-                              </div>
-                            </div>
-                          </button>
                         </div>
                       </Modal>
                     )}

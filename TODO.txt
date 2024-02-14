@@ -140,3 +140,6 @@ Added bio Modal popup.
 
 12-02-2024:
 Started restructuring of profile page where profile_picture and profile_background can be updated by clicking on them.
+
+14-02-2024:
+Restructured profile.jsx and added PictureEditor.jsx in order to individually edit profile_picture and profile_background.
