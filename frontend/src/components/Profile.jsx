@@ -207,7 +207,7 @@ const Profile = () => {
           </div>
         </div>
       )}
-      {!isAuthenticated && <p>Please log in to view your profile.</p>}
+      {!isAuthenticated && <h1>Please log in to view your profile.</h1>}
     </section>
   );
 };

@@ -119,9 +119,17 @@
 }
 
 /*------ btn-bio ------*/
+.btn-bio {
+    margin-left: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    opacity: 0.6;
 
-
-
+    &:hover {
+        color: rgb(128, 128, 255);
+    }
+}
 
 .countries {
     display: flex;

@@ -143,3 +143,4 @@ Started restructuring of profile page where profile_picture and profile_backgrou
 
 14-02-2024:
 Restructured profile.jsx and added PictureEditor.jsx in order to individually edit profile_picture and profile_background.
+Stylistic changes are mostly done for Profile.jsx, next up is implementing the Leaflet map.
