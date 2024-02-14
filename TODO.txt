@@ -145,4 +145,9 @@ Started restructuring of profile page where profile_picture and profile_backgrou
 Restructured profile.jsx and added PictureEditor.jsx in order to individually edit profile_picture and profile_background.
 Stylistic changes are mostly done for Profile.jsx, next up is implementing the Leaflet map.
 Started with Destinations.jsx by implementing the Leaflet API.
-Switching backend from REST countries to Leaflet.
+
+Switching backend from REST countries to Leaflet. 
+     -> Ran into some issues trying to migrate new model, might have to reset whole backend in order to integrate Leaflet instead of
+     REST countries. command:      "python manage.py migrate travel zero"      WARN!!!! ONLY USE IF 100% SURE!!!!
+
+     Otherwise remove the following:  "You can manually delete the rows causing the integrity error in the travel_userprofile_visited_countries table."
