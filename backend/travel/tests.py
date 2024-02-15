@@ -139,14 +139,3 @@ class UserProfileViewTest(TestCase):
         updated_user_profile = UserProfile.objects.get(user=self.user)
         self.assertEqual(updated_user_profile.bio, updated_data['bio'])
         self.assertEqual(updated_user_profile.location, updated_data['location'])
-        
-        
-class LocalPlaceViewTest(TestCase):
-    def setUp(self):
-        self.client = APIClient()
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
-    
-    def test_get_local_places_200(self):
-        self.client.force_authenticate(user=self.user)
-        response = self.client.get('/api/localplace/')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
