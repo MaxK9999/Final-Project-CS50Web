@@ -12,6 +12,12 @@ class BlogPost(models.Model):
     banner_image = models.ImageField(upload_to='blog_post_images/', blank=True, null=True)
     
     
+class Country(models.Model):
+    name = models.CharField(max_length=100)
+    latitude = models.DecimalField(max_digits=9, decimal_places=6)
+    longitude = models.DecimalField(max_digits=9, decimal_places=6)
+    
+    
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
