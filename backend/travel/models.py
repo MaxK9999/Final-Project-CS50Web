@@ -12,15 +12,6 @@ class BlogPost(models.Model):
     banner_image = models.ImageField(upload_to='blog_post_images/', blank=True, null=True)
     
     
-class Country(models.Model):
-    name = models.CharField(max_length=255)
-    latitude = models.DecimalField(max_digits=9, decimal_places=6)
-    longitude = models.DecimalField(max_digits=9, decimal_places=6)
-    
-    def __str__(self):
-        return self.name
-    
-
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
@@ -28,17 +19,6 @@ class UserProfile(models.Model):
     birth_date = models.DateField(null=True, blank=True)
     profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
     profile_background = models.ImageField(upload_to='profile_backgrounds/', blank=True, null=True)
-    visited_countries = models.ManyToManyField(Country, related_name='visited_by')
-    planned_countries = models.ManyToManyField(Country, related_name='planned_by')
     
     def __str__(self):
         return f"{self.user.username}'s Profile"
-    
-    
-class LocalPlace(models.Model):
-    country = models.CharField(max_length=100)
-    city = models.CharField(max_length=100, blank=True, null=True)
-    code = models.CharField(max_length=2)
-    
-    def __str__(self):
-        return self.country

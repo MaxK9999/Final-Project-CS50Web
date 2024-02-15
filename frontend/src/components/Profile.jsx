@@ -191,12 +191,6 @@ const Profile = () => {
                   <h5>Birth Date: {profileData.birth_date}</h5>
                 </div>
                 <div className="countries">
-                  <p>
-                      Countries Visited: {profileData.visited_countries.map(country => country.country).join(", ")}
-                  </p>
-                  <p>
-                      Interested in visiting: {profileData.interests.map(country => country.country).join(", ")}
-                  </p>
                 </div>
                 <button className="login-button" onClick={() => setEditing(true)}>Edit Profile</button>
               </div>

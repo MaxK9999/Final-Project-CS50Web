@@ -6,9 +6,8 @@ from django.contrib.auth.models import User, Group
 from django.contrib.auth import login, logout
 from django.core.mail import BadHeaderError, EmailMessage
 from django.conf import settings
-from collections import defaultdict
-from .models import BlogPost, LocalPlace
-from .serializers import BlogPostSerializer, UserSerializer, UserProfileSerializer, LocalPlaceSerializer
+from .models import BlogPost
+from .serializers import BlogPostSerializer, UserSerializer, UserProfileSerializer
 
 
 class BlogPostViewSet(viewsets.ModelViewSet):
@@ -33,31 +32,7 @@ class UserViewSet(viewsets.ModelViewSet):
     def get(self, request):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
-         
 
-class LocalPlaceViewSet(viewsets.ModelViewSet):
-    queryset = LocalPlace.objects.all()
-
-    serializer_class = LocalPlaceSerializer
-    permission_classes = [permissions.AllowAny]
-    
-    def list(self, request, *args, **kwargs):
-        queryset = self.filter_queryset(self.get_queryset())
-        serialized_data = LocalPlaceSerializer(queryset, many=True).data
-
-        # Grouping logic of country names
-        grouped_results = defaultdict(list)
-        for entry in serialized_data:
-            country = entry["country"]
-            grouped_results[country].append(None)
-
-        # Sorting the countries alphabetically
-        sorted_countries = sorted(grouped_results.keys())
-
-        # Converting sorted countries to the desired response format
-        grouped_results = [{"country": country} for country in sorted_countries]
-        return Response(grouped_results)
-    
     
 class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()

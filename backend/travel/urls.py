@@ -1,13 +1,12 @@
 from rest_framework import routers
 from .views import BlogPostViewSet, UserViewSet, GroupViewSet, LoginView, LogoutView, RegisterView, EmailHandler
-from .views import UserProfileView, LocalPlaceViewSet
+from .views import UserProfileView
 from django.urls import path, include
 
 
 router = routers.DefaultRouter()
 router.register(r'blogposts', BlogPostViewSet, basename='blogpost')
 router.register(r'users', UserViewSet, basename='user')
-router.register(r'localplace', LocalPlaceViewSet, basename='localplace')
 router.register(r'groups', GroupViewSet, basename='group')
 
 

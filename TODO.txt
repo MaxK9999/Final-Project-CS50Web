@@ -151,3 +151,6 @@ Switching backend from REST countries to Leaflet.
      REST countries. command:      "python manage.py migrate travel zero"      WARN!!!! ONLY USE IF 100% SURE!!!!
 
      Otherwise remove the following:  "You can manually delete the rows causing the integrity error in the travel_userprofile_visited_countries table."
+
+15-02-2024:
+Removed REST countries from backend, migrated backend, lot of restructuring so code MIGHT be bugged in some places!!!!
