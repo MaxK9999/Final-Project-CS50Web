@@ -155,3 +155,4 @@ Switching backend from REST countries to Leaflet.
 15-02-2024:
 Removed REST countries from backend, migrated backend, lot of restructuring so code MIGHT be bugged in some places!!!!
 Emptied db in order to migrate anew.
+Tidied up frontend WorldMap code.

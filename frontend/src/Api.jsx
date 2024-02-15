@@ -78,18 +78,17 @@ export const updateProfile = async (formData) => {
     }
 };
 
-export const getLocalPlace = async () => {
+export const getCountries = async () => {
     try {
-        const response = await api.get("localplace/");
-        const countries = response.data.map(place => ({
-            name: place.country,
-            code: place.code,
-            center: [0,0],
+        const response = await api.get(`countries`);
+        const countries = response.data.map(country => ({
+            name: country.name,
+            center: [country.latitude, country.longitude],
         }));
-        console.log("Local places fetched successfully:", response.data);
+        console.log('Countries fetched succesful', response.data);
         return countries;
     } catch (error) {
-        console.error("Error fetching local places:", error);
+        console.log('Error fetching countries:', error);
         throw error;
     }
 };

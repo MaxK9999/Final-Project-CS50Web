@@ -1,5 +1,5 @@
 import React from "react";
-import MapContainer from "./MapContainer";
+import WorldMap from "./WorldMap";
 import "../components_styles/Destinations.css";
 import Heading from "./Heading";
 
@@ -8,7 +8,7 @@ const Destinations = () => {
         <section className="destinations-page">
             <div className="heading">
                 <Heading title="Destinations" />
-                <MapContainer />
+                <WorldMap />
             </div>
         </section>
     );
