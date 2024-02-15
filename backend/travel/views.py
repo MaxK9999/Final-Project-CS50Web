@@ -7,7 +7,7 @@ from django.contrib.auth import login, logout
 from django.core.mail import BadHeaderError, EmailMessage
 from django.conf import settings
 from .models import BlogPost
-from .serializers import BlogPostSerializer, UserSerializer, UserProfileSerializer
+from .serializers import BlogPostSerializer, UserSerializer, UserProfileSerializer, CountrySerializer
 
 
 class BlogPostViewSet(viewsets.ModelViewSet):
@@ -138,3 +138,19 @@ class UserProfileView(APIView):
             return Response(serializer.data)
         print (serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+class UserCountriesAPIView(APIView):
+    permission_classes = [permissions.AllowAny]
+    
+    def get(self, request, username, country_type, *args, **kwargs):
+        if country_type == "visited":
+            visited_countries = UserProfileView.objects.get(user__username=username).visited_countries.all()
+            serializer = CountrySerializer(visited_countries, many=True)
+            return Response(serializer.data)
+        elif country_type == "interested":
+            interested_countries = UserProfileView.objects.get(user__username=username).interested_countries.all()
+            serializer = CountrySerializer(interested_countries, many=True)
+            return Response(serializer.data)
+        else:
+            return Response("Invalid country type.", status=status.HTTP_400_BAD_REQUEST)

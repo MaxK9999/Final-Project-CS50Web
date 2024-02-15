@@ -25,6 +25,8 @@ class UserProfile(models.Model):
     birth_date = models.DateField(null=True, blank=True)
     profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True, null=True)
     profile_background = models.ImageField(upload_to='profile_backgrounds/', blank=True, null=True)
+    visited_countries = models.ManyToManyField(Country, related_name='users', blank=True)
+    interested_countries = models.ManyToManyField(Country, related_name='interested_users', blank=True)
     
     def __str__(self):
         return f"{self.user.username}'s Profile"

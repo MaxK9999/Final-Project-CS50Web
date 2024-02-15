@@ -156,3 +156,4 @@ Switching backend from REST countries to Leaflet.
 Removed REST countries from backend, migrated backend, lot of restructuring so code MIGHT be bugged in some places!!!!
 Emptied db in order to migrate anew.
 Tidied up frontend WorldMap code.
+Created view specific for user profile for displaying interested and visited countries, will be integrated with Profile.jsx later.

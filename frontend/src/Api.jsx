@@ -78,6 +78,7 @@ export const updateProfile = async (formData) => {
     }
 };
 
+// Use this one for Destinations.jsx
 export const getCountries = async () => {
     try {
         const response = await api.get(`countries`);
@@ -92,3 +93,15 @@ export const getCountries = async () => {
         throw error;
     }
 };
+
+// Use this one for Profile.jsx
+export const getUserCountries = async (username, countryType) => {
+    try {
+        const response = await api.get(`user_countries/${username}/${countryType}`);
+        console.log('User countries fetched succesful', response.data);
+        return response.data;
+    } catch (error) {
+        console.log('Error fetching user countries:', error);
+        throw error;
+    }
+}
