@@ -161,4 +161,4 @@ Created view specific for user profile for displaying interested and visited cou
 16-02-2024:
 Added ProfileMap component to Profile.jsx, now need to implement all features to it.
 Discovered bug in Profile.jsx where on expansion of bio overflow-y is suddenly blocked. -> SOLVED
-Map does not fully work, clicking on map currently does nothing.
+Map does not fully work, clicking on map currently does nothing. -> SOLVED

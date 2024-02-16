@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { getUserCountries, addToVisitedCountries, addToInterestedCountries } from "../Api";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+
 
 const ProfileMap = ({ username, countryType }) => {
   const [userCountries, setUserCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState(null);
+  const [popupPosition, setPopupPosition] = useState(null);
+  const mapRef = useRef();
 
   useEffect(() => {
     const fetchUserCountriesData = async () => {
@@ -18,7 +21,7 @@ const ProfileMap = ({ username, countryType }) => {
     };
 
     fetchUserCountriesData();
-  }, [username, countryType]);
+  }, [username, countryType, selectedCountry]);
 
   const mapStyle = {
     width: "50vw",
@@ -26,15 +29,45 @@ const ProfileMap = ({ username, countryType }) => {
   };
 
   const handleMarkerClick = (country) => {
-    console.log("clicked on map");
-    console.log(`Clicked on ${country.name}`);
+    console.log("Marker clicked:", country);
     setSelectedCountry(country);
+  };
+
+  const fetchCountryData = async (latlng) => {
+    const { lat, lng } = latlng;
+    const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`;
+    const response = await fetch(url);
+    const data = await response.json();
+  
+    // Extract country name from the response
+    const countryName = data.address && data.address.country ? data.address.country : "Unknown";
+  
+    // Adding country name to the response data
+    return { ...data, name: countryName };
+  };
+
+  const handleMapClick = async (event) => {
+    const { latlng } = event;
+    try {
+      const countryData = await fetchCountryData(latlng);
+      setSelectedCountry(countryData);
+      console.log("Country data fetched:", countryData);
+    } catch (error) {
+      console.error("Error fetching country data:", error);
+    }
+    setPopupPosition(latlng);
+  };
+
+  const MapEvents = () => {
+    useMapEvents({
+      click: handleMapClick,
+    });
+    return null;
   };
 
   const handleAddToVisited = async () => {
     if (selectedCountry) {
       await addToVisitedCountries(selectedCountry.name);
-      // Refresh user countries after updating
       const updatedUserCountries = await getUserCountries(username, countryType);
       setUserCountries(updatedUserCountries);
       setSelectedCountry(null);
@@ -44,7 +77,6 @@ const ProfileMap = ({ username, countryType }) => {
   const handleAddToInterested = async () => {
     if (selectedCountry) {
       await addToInterestedCountries(selectedCountry.name);
-      // Refresh user countries after updating
       const updatedUserCountries = await getUserCountries(username, countryType);
       setUserCountries(updatedUserCountries);
       setSelectedCountry(null);
@@ -53,11 +85,14 @@ const ProfileMap = ({ username, countryType }) => {
 
   return (
     <div>
-      <MapContainer center={[0, 0]} zoom={2} maxZoom={5} minZoom={2} style={mapStyle}>
+      <MapContainer center={[0, 0]} zoom={2} style={mapStyle} ref={mapRef}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+
+        <MapEvents />
+
         {userCountries.map((country) => (
           <Marker
             key={country.name}
@@ -67,7 +102,18 @@ const ProfileMap = ({ username, countryType }) => {
             <Popup>{country.name}</Popup>
           </Marker>
         ))}
+
+        {popupPosition && (
+          <Popup position={popupPosition}>
+            <div>
+              <p>{selectedCountry.name}</p>
+              <button onClick={handleAddToVisited}>Add to Visited</button>
+              <button onClick={handleAddToInterested}>Add to Interested</button>
+            </div>
+          </Popup>
+        )}
       </MapContainer>
+
 
       {selectedCountry && (
         <div>
