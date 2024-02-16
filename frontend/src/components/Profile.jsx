@@ -3,6 +3,7 @@ import Modal from "./Modal";
 import Heading from "./Heading";
 import ProfileForm from "./ProfileForm";
 import PictureEditor from "./PictureEditor";
+import ProfileMap from "./ProfileMap";
 import "../components_styles/Heading.css";
 import "../components_styles/Profile.css";
 import { fetchProfileData, updateProfile } from "../Api";
@@ -190,14 +191,20 @@ const Profile = () => {
                   <h5>Location: {profileData.location}</h5>
                   <h5>Birth Date: {profileData.birth_date}</h5>
                 </div>
-                <div className="countries">
-                </div>
                 <button className="login-button" onClick={() => setEditing(true)}>Edit Profile</button>
               </div>
             )}
           </div>
           
+          <br /><br /><br />
+
           <div className="profile-body">
+            <div className="countries">
+
+            {/* ----------------  Insert map here -----------------*/}
+            <ProfileMap username={profileData.user_username} countryType="visited" />
+
+            </div>
           </div>
         </div>
       )}

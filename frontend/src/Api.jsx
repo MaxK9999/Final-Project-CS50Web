@@ -104,4 +104,22 @@ export const getUserCountries = async (username, countryType) => {
         console.log('Error fetching user countries:', error);
         throw error;
     }
-}
+};
+
+const addToCountryList = async (countryType, countryName) => {
+    try {
+      const response = await api.post(`add-to-${countryType}/${countryName}`);
+      console.log(`Added ${countryName} to ${countryType} countries.`, response.data);
+    } catch (error) {
+      console.error(`Error adding ${countryName} to ${countryType} countries:`, error);
+      throw error;
+    }
+  };
+  
+  export const addToVisitedCountries = async (countryName) => {
+    await addToCountryList('visited', countryName);
+  };
+  
+  export const addToInterestedCountries = async (countryName) => {
+    await addToCountryList('interested', countryName);
+  };

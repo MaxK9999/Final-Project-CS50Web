@@ -157,3 +157,8 @@ Removed REST countries from backend, migrated backend, lot of restructuring so c
 Emptied db in order to migrate anew.
 Tidied up frontend WorldMap code.
 Created view specific for user profile for displaying interested and visited countries, will be integrated with Profile.jsx later.
+
+16-02-2024:
+Added ProfileMap component to Profile.jsx, now need to implement all features to it.
+Discovered bug in Profile.jsx where on expansion of bio overflow-y is suddenly blocked. -> SOLVED
+Map does not fully work, clicking on map currently does nothing.

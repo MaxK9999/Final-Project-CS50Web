@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../components_styles/Modal.css";
 
 const Modal = ({ children }) => {
@@ -10,12 +10,20 @@ const Modal = ({ children }) => {
       setModal(false);
     }
   };
+  
 
-  if (modal) {
-    document.body.classList.add("active-modal");
-  } else {
-    document.body.classList.remove("active-modal");
-  }
+  useEffect(() => {
+    if (modal) {
+        document.body.classList.add("active-modal");
+      } else {
+        document.body.classList.remove("active-modal");
+      }
+
+      return () => {
+        document.body.classList.remove("active-modal");
+      };
+    }, [modal]);
+
 
   return (
     <>
