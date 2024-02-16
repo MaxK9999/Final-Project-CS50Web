@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { getUserCountries, addToVisitedCountries, addToInterestedCountries } from "../Api";
+import { getUserCountries, addToVisitedOrInterestedCountries } from "../Api";
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -65,23 +65,24 @@ const ProfileMap = ({ username, countryType }) => {
     return null;
   };
 
+
   const handleAddToVisited = async () => {
     if (selectedCountry) {
-      await addToVisitedCountries(username, selectedCountry.name);
-      const updatedUserCountries = await getUserCountries(username, countryType);
-      setUserCountries(updatedUserCountries);
-      setSelectedCountry(null);
+        await addToVisitedOrInterestedCountries(username, 'visited', selectedCountry.name);
+        const updatedUserCountries = await getUserCountries(username, countryType);
+        setUserCountries(updatedUserCountries);
+        setSelectedCountry(null);
     }
-  };
-  
-  const handleAddToInterested = async () => {
+};
+
+const handleAddToInterested = async () => {
     if (selectedCountry) {
-      await addToInterestedCountries(username, selectedCountry.name);
-      const updatedUserCountries = await getUserCountries(username, countryType);
-      setUserCountries(updatedUserCountries);
-      setSelectedCountry(null);
+        await addToVisitedOrInterestedCountries(username, 'interested', selectedCountry.name);
+        const updatedUserCountries = await getUserCountries(username, countryType);
+        setUserCountries(updatedUserCountries);
+        setSelectedCountry(null);
     }
-  };
+};
 
   return (
     <div>

@@ -106,30 +106,28 @@ export const getUserCountries = async (username, countryType) => {
     }
 };
 
-const addToCountryList = async (countryType, username, countryName) => {
+// General function to add a country to a user's list
+export const addToCountryList = async (countryType, username, countryName) => {
     try {
-      const response = await api.post(
-        `/user_countries/${username}/${countryType}/`,
-        {
-          country_name: countryName,
-        },
-        {
-          headers: {
-            'X-CSRFToken': getCookie('csrftoken')
-          }
-        }
-      );
-      console.log(`Added ${countryName} to ${countryType} countries.`, response.data);
+        const response = await api.post(
+            `/user_countries/${username}/${countryType}/`,
+            {
+                country_name: countryName,
+            },
+            {
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken')
+                }
+            }
+        );
+        console.log(`Added ${countryName} to ${countryType} countries.`, response.data);
     } catch (error) {
-      console.error(`Error adding ${countryName} to ${countryType} countries:`, error);
-      throw error;
+        console.error(`Error adding ${countryName} to ${countryType} countries:`, error);
+        throw error;
     }
 };
 
-export const addToVisitedCountries = async (username, countryName) => {
-    await addToCountryList('visited', username, countryName);
-};
-
-export const addToInterestedCountries = async (username, countryName) => {
-    await addToCountryList('interested', username, countryName);
+// Use this function for both visited and interested countries
+export const addToVisitedOrInterestedCountries = async (username, countryType, countryName) => {
+    await addToCountryList(countryType, username, countryName);
 };

@@ -8,6 +8,7 @@ from django.core.mail import BadHeaderError, EmailMessage
 from django.conf import settings
 from .models import BlogPost, UserProfile, Country
 from .serializers import BlogPostSerializer, UserSerializer, UserProfileSerializer, CountrySerializer
+import requests
 
 
 class BlogPostViewSet(viewsets.ModelViewSet):
@@ -140,7 +141,7 @@ class UserProfileView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
-class UserCountriesAPIView(APIView):
+class UserCountriesView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request, username, country_type, *args, **kwargs):
@@ -183,3 +184,37 @@ class UserCountriesAPIView(APIView):
             return Response("Invalid country type.", status=status.HTTP_400_BAD_REQUEST)
 
         return Response(f"Added {country_name} to {country_type} countries.", status=status.HTTP_200_OK)
+    
+    
+class AddCountryView(APIView):
+    def post(self, request, *args, **kwargs):
+        latitude = request.data.get('latitude')
+        longitude = request.data.get('longitude')
+
+        try:
+            # Use Nominatim to get country from latlng
+            country_name = self.get_country_from_latlng(latitude, longitude)
+
+            # Fetch the user based on the request
+            user = request.user
+            user_profile = UserProfile.objects.get(user=user)
+
+            # Associate the country with the user
+            country_data = {'name': country_name, 'latitude': latitude, 'longitude': longitude}
+            serializer = CountrySerializer(data=country_data)
+            if serializer.is_valid():
+                country = serializer.save()
+                user_profile.visited_countries.add(country)  # Adjust based on your logic
+
+                return Response(f"Added {country_name} to the database.", status=status.HTTP_201_CREATED)
+            else:
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    def get_country_from_latlng(self, latitude, longitude):
+        nominatim_url = f"https://nominatim.openstreetmap.org/reverse?format=json&lat={latitude}&lon={longitude}"
+        response = requests.get(nominatim_url)
+        data = response.json()
+        country_name = data.get('address', {}).get('country', 'Unknown')
+        return country_name
