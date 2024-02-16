@@ -141,8 +141,8 @@ class UserProfileView(APIView):
     
 
 class UserCountriesAPIView(APIView):
-    permission_classes = [permissions.AllowAny]
-    
+    permission_classes = [permissions.IsAuthenticated]
+
     def get(self, request, username, country_type, *args, **kwargs):
         try:
             user_profile = UserProfile.objects.get(user__username=username)
@@ -158,3 +158,28 @@ class UserCountriesAPIView(APIView):
 
         serializer = CountrySerializer(countries, many=True)
         return Response(serializer.data)
+
+
+    def post(self, request, username, country_type, *args, **kwargs):
+        country_name = request.data.get('country_name')
+
+        try:
+            user_profile = UserProfile.objects.get(user__username=username)
+        except UserProfile.DoesNotExist:
+            return Response("User profile not found.", status=status.HTTP_404_NOT_FOUND)
+
+        country_qs = Country.objects.filter(name=country_name)
+
+        if not country_qs.exists():
+            return Response(f"Country {country_name} not found.", status=status.HTTP_404_NOT_FOUND)
+
+        country = country_qs.first()
+
+        if country_type == "visited":
+            user_profile.visited_countries.add(country)
+        elif country_type == "interested":
+            user_profile.interested_countries.add(country)
+        else:
+            return Response("Invalid country type.", status=status.HTTP_400_BAD_REQUEST)
+
+        return Response(f"Added {country_name} to {country_type} countries.", status=status.HTTP_200_OK)

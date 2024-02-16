@@ -17,7 +17,7 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
     path('send_mail/', EmailHandler.as_view(), name='send_mail'),
     path('userprofile/', UserProfileView.as_view(), name='userprofile'),
-    path('user_countries/<str:username>/<str:country_type>/', UserCountriesAPIView.as_view(), name='countries'),
+    path('user_countries/<str:username>/<str:country_type>/', UserCountriesAPIView.as_view(), name='user_countries'),
 ]
 
 

@@ -67,16 +67,16 @@ const ProfileMap = ({ username, countryType }) => {
 
   const handleAddToVisited = async () => {
     if (selectedCountry) {
-      await addToVisitedCountries(selectedCountry.name);
+      await addToVisitedCountries(username, selectedCountry.name);
       const updatedUserCountries = await getUserCountries(username, countryType);
       setUserCountries(updatedUserCountries);
       setSelectedCountry(null);
     }
   };
-
+  
   const handleAddToInterested = async () => {
     if (selectedCountry) {
-      await addToInterestedCountries(selectedCountry.name);
+      await addToInterestedCountries(username, selectedCountry.name);
       const updatedUserCountries = await getUserCountries(username, countryType);
       setUserCountries(updatedUserCountries);
       setSelectedCountry(null);
@@ -85,7 +85,7 @@ const ProfileMap = ({ username, countryType }) => {
 
   return (
     <div>
-      <MapContainer center={[0, 0]} zoom={2} style={mapStyle} ref={mapRef}>
+      <MapContainer center={[0, 0]} zoom={2} minZoom={2} maxZoom={14} style={mapStyle} ref={mapRef}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -113,14 +113,6 @@ const ProfileMap = ({ username, countryType }) => {
           </Popup>
         )}
       </MapContainer>
-
-
-      {selectedCountry && (
-        <div>
-          <button onClick={handleAddToVisited}>Add to Visited</button>
-          <button onClick={handleAddToInterested}>Add to Interested</button>
-        </div>
-      )}
     </div>
   );
 };

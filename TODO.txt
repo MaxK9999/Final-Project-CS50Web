@@ -162,3 +162,4 @@ Created view specific for user profile for displaying interested and visited cou
 Added ProfileMap component to Profile.jsx, now need to implement all features to it.
 Discovered bug in Profile.jsx where on expansion of bio overflow-y is suddenly blocked. -> SOLVED
 Map does not fully work, clicking on map currently does nothing. -> SOLVED
+Fixing feature of adding visited and interested countries, need backend support.
