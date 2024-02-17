@@ -33,18 +33,24 @@ const ProfileMap = ({ username, countryType }) => {
     setSelectedCountry(country);
   };
 
-  const fetchCountryData = async (latlng) => {
-    const { lat, lng } = latlng;
+const fetchCountryData = async (latlng) => {
+    const { lat, lng } = latlng; // Updated destructuring here
     const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`;
-    const response = await fetch(url);
-    const data = await response.json();
-  
-    // Extract country name from the response
-    const countryName = data.address && data.address.country ? data.address.country : "Unknown";
-  
-    // Adding country name to the response data
-    return { ...data, name: countryName };
-  };
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        // Extract country name from the response
+        const countryName = data.address && data.address.country ? data.address.country : "Unknown";
+
+        // Adding country name to the response data
+        return { ...data, name: countryName, latitude: lat, longitude: lng }; // Include latitude and longitude
+    } catch (error) {
+        console.error("Error fetching country data:", error);
+        throw error;
+    }
+};
 
   const handleMapClick = async (event) => {
     const { latlng } = event;
@@ -67,22 +73,36 @@ const ProfileMap = ({ username, countryType }) => {
 
 
   const handleAddToVisited = async () => {
-    if (selectedCountry) {
-        await addToVisitedOrInterestedCountries(username, 'visited', selectedCountry.name);
-        const updatedUserCountries = await getUserCountries(username, countryType);
-        setUserCountries(updatedUserCountries);
-        setSelectedCountry(null);
+    if (selectedCountry && selectedCountry.latitude && selectedCountry.longitude) {
+        try {
+            await addToVisitedOrInterestedCountries(username, 'visited', selectedCountry.name, selectedCountry.latitude, selectedCountry.longitude);
+            // Additional logic if needed
+        } catch (error) {
+            console.error("Error adding country to visited:", error);
+        }
+    } else {
+        console.error("Invalid latitude or longitude.");
     }
-};
+  };
 
-const handleAddToInterested = async () => {
-    if (selectedCountry) {
-        await addToVisitedOrInterestedCountries(username, 'interested', selectedCountry.name);
-        const updatedUserCountries = await getUserCountries(username, countryType);
-        setUserCountries(updatedUserCountries);
-        setSelectedCountry(null);
+
+  const handleAddToInterested = async () => {
+    console.log("Selected Country:", selectedCountry);
+    if (selectedCountry && selectedCountry.latitude && selectedCountry.longitude) {
+        try {
+            await addToVisitedOrInterestedCountries(username, 'interested', selectedCountry.name, selectedCountry.latitude, selectedCountry.longitude);
+            const updatedUserCountries = await getUserCountries(username, countryType);
+            setUserCountries(updatedUserCountries);
+            setSelectedCountry(null);
+        } catch (error) {
+            console.error("Error adding country to interested:", error);
+        }
+    } else {
+        console.error("Invalid latitude or longitude.");
     }
-};
+  };
+
+
 
   return (
     <div>
@@ -104,7 +124,7 @@ const handleAddToInterested = async () => {
           </Marker>
         ))}
 
-        {popupPosition && (
+        {popupPosition && selectedCountry && (
           <Popup position={popupPosition}>
             <div>
               <p>{selectedCountry.name}</p>

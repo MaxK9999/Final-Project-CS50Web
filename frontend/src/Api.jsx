@@ -107,12 +107,14 @@ export const getUserCountries = async (username, countryType) => {
 };
 
 // General function to add a country to a user's list
-export const addToCountryList = async (countryType, username, countryName) => {
+export const addToCountryList = async (countryType, username, countryName, latitude, longitude) => {
     try {
         const response = await api.post(
-            `/user_countries/${username}/${countryType}/`,
+            `/add_country/`,
             {
                 country_name: countryName,
+                latitude: latitude,
+                longitude: longitude,
             },
             {
                 headers: {
@@ -127,7 +129,6 @@ export const addToCountryList = async (countryType, username, countryName) => {
     }
 };
 
-// Use this function for both visited and interested countries
-export const addToVisitedOrInterestedCountries = async (username, countryType, countryName) => {
-    await addToCountryList(countryType, username, countryName);
+export const addToVisitedOrInterestedCountries = async (username, countryType, countryName, latitude, longitude) => {
+    await addToCountryList(countryType, username, countryName, latitude, longitude);
 };
