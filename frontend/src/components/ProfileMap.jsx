@@ -87,20 +87,17 @@ const fetchCountryData = async (latlng) => {
 
 
   const handleAddToInterested = async () => {
-    console.log("Selected Country:", selectedCountry);
     if (selectedCountry && selectedCountry.latitude && selectedCountry.longitude) {
         try {
             await addToVisitedOrInterestedCountries(username, 'interested', selectedCountry.name, selectedCountry.latitude, selectedCountry.longitude);
-            const updatedUserCountries = await getUserCountries(username, countryType);
-            setUserCountries(updatedUserCountries);
-            setSelectedCountry(null);
+
         } catch (error) {
             console.error("Error adding country to interested:", error);
         }
-    } else {
-        console.error("Invalid latitude or longitude.");
-    }
-  };
+      } else {
+          console.error("Invalid latitude or longitude.");
+      }
+    };
 
 
 

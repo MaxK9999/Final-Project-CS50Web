@@ -8,7 +8,7 @@ from django.core.mail import BadHeaderError, EmailMessage
 from django.conf import settings
 from .models import BlogPost, UserProfile, Country
 from .serializers import BlogPostSerializer, UserSerializer, UserProfileSerializer, CountrySerializer
-import requests, traceback
+import traceback
 
 
 class BlogPostViewSet(viewsets.ModelViewSet):
@@ -215,12 +215,16 @@ class AddCountryView(APIView):
             else:
                 country = country_qs.first()
 
-            # Associate the country with the user
-            user_profile.visited_countries.add(country)  # Adjust based on your logic
+            # If country is in visited countries, add to visited, else add to interested
+            if country in user_profile.visited_countries.all():
+                user_profile.visited_countries.add(country)
+            elif country not in user_profile.interested_countries.all():
+                user_profile.interested_countries.add(country)
 
             return Response(f"Added {country_name} to the database.", status=status.HTTP_201_CREATED)
         except Exception as e:
             traceback_str = traceback.format_exc()
             print(f"Error in AddCountryView: {e}\n{traceback_str}")
             return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
