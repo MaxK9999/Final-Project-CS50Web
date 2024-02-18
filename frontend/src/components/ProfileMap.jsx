@@ -110,13 +110,13 @@ const fetchCountryData = async (latlng) => {
 
         {userCountries.map((country) => {
           return (
-            <Marker
-              key={country.name}
-              position={[country.latitude, country.longitude]}
-              onClick={() => handleMarkerClick(country)}
-            >
-              <Popup>{country.name}</Popup>
-            </Marker>
+              <Marker
+                key={country.name}
+                position={[country.latitude, country.longitude]}
+                onClick={() => handleMarkerClick(country)}
+              >
+                <Popup>{country.name}</Popup>
+              </Marker>
           );
         })}
 
