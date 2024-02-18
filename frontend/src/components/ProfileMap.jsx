@@ -83,21 +83,21 @@ const fetchCountryData = async (latlng) => {
     } else {
         console.error("Invalid latitude or longitude.");
     }
-  };
+};
 
-
-  const handleAddToInterested = async () => {
+const handleAddToInterested = async () => {
     if (selectedCountry && selectedCountry.latitude && selectedCountry.longitude) {
         try {
             await addToVisitedOrInterestedCountries(username, 'interested', selectedCountry.name, selectedCountry.latitude, selectedCountry.longitude);
-
         } catch (error) {
             console.error("Error adding country to interested:", error);
         }
-      } else {
-          console.error("Invalid latitude or longitude.");
-      }
-    };
+    } else {
+        console.error("Invalid latitude or longitude.");
+    }
+};
+
+
 
 
 

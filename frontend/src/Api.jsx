@@ -115,6 +115,7 @@ export const addToCountryList = async (countryType, username, countryName, latit
                 country_name: countryName,
                 latitude: latitude,
                 longitude: longitude,
+                country_type: countryType,
             },
             {
                 headers: {

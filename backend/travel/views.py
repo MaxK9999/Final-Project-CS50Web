@@ -194,9 +194,10 @@ class AddCountryView(APIView):
         country_name = request.data.get('country_name')
         latitude_str = request.data.get('latitude')
         longitude_str = request.data.get('longitude')
+        country_type = request.data.get('country_type')  # Add this line to get the country type
 
-        if latitude_str is None or longitude_str is None:
-            return Response("Latitude and Longitude are required.", status=status.HTTP_400_BAD_REQUEST)
+        if latitude_str is None or longitude_str is None or country_type is None:
+            return Response("Latitude, Longitude, and Country Type are required.", status=status.HTTP_400_BAD_REQUEST)
 
         try:
             latitude = float(latitude_str)
@@ -215,13 +216,15 @@ class AddCountryView(APIView):
             else:
                 country = country_qs.first()
 
-            # If country is in visited countries, add to visited, else add to interested
-            if country in user_profile.visited_countries.all():
+            # Associate the country with the user based on the country type
+            if country_type == 'visited':
                 user_profile.visited_countries.add(country)
-            elif country not in user_profile.interested_countries.all():
+            elif country_type == 'interested':
                 user_profile.interested_countries.add(country)
+            else:
+                return Response("Invalid Country Type.", status=status.HTTP_400_BAD_REQUEST)
 
-            return Response(f"Added {country_name} to the database.", status=status.HTTP_201_CREATED)
+            return Response(f"Added {country_name} to the {country_type} countries.", status=status.HTTP_201_CREATED)
         except Exception as e:
             traceback_str = traceback.format_exc()
             print(f"Error in AddCountryView: {e}\n{traceback_str}")

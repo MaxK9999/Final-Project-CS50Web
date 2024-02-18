@@ -168,3 +168,6 @@ Fixing feature of adding visited and interested countries, need backend support.
 ProfileMap bug fixed! Data now get's logged correctly to backend, and is in turn correctly displayed in the frontend map.
 Encountered new bug where visited countries work as expected, but interested countries get logged in the same array for some reason,
      needs fixing.
+
+18-02-2024:
+Fixed bug, both interested and visited get added correctly now, DO NOT EDIT addToCountryList!!!!
