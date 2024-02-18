@@ -98,7 +98,7 @@ export const getCountries = async () => {
 export const getUserCountries = async (username, countryType) => {
     try {
         const response = await api.get(`user_countries/${username}/${countryType}`);
-        console.log('User countries fetched succesful', response.data);
+        console.log(`${countryType} countries fetched succesful`, response.data);
         return response.data;
     } catch (error) {
         console.log('Error fetching user countries:', error);

@@ -144,46 +144,19 @@ class UserProfileView(APIView):
 class UserCountriesView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
-    def get(self, request, username, country_type, *args, **kwargs):
+    def get(self, request, username, *args, **kwargs):
         try:
             user_profile = UserProfile.objects.get(user__username=username)
         except UserProfile.DoesNotExist:
             return Response("User profile not found.", status=status.HTTP_404_NOT_FOUND)
 
-        if country_type == "visited":
-            countries = user_profile.visited_countries.all()
-        elif country_type == "interested":
-            countries = user_profile.interested_countries.all()
-        else:
-            return Response("Invalid country type.", status=status.HTTP_400_BAD_REQUEST)
+        visited_countries = user_profile.visited_countries.all()
+        interested_countries = user_profile.interested_countries.all()
+
+        countries = visited_countries | interested_countries # Updated to make sure both get fetched at the same time
 
         serializer = CountrySerializer(countries, many=True)
         return Response(serializer.data)
-
-
-    def post(self, request, username, country_type, *args, **kwargs):
-        country_name = request.data.get('country_name')
-
-        try:
-            user_profile = UserProfile.objects.get(user__username=username)
-        except UserProfile.DoesNotExist:
-            return Response("User profile not found.", status=status.HTTP_404_NOT_FOUND)
-
-        country_qs = Country.objects.filter(name=country_name)
-
-        if not country_qs.exists():
-            return Response(f"Country {country_name} not found.", status=status.HTTP_404_NOT_FOUND)
-
-        country = country_qs.first()
-
-        if country_type == "visited":
-            user_profile.visited_countries.add(country)
-        elif country_type == "interested":
-            user_profile.interested_countries.add(country)
-        else:
-            return Response("Invalid country type.", status=status.HTTP_400_BAD_REQUEST)
-
-        return Response(f"Added {country_name} to {country_type} countries.", status=status.HTTP_200_OK)
     
     
 class AddCountryView(APIView):
@@ -194,7 +167,7 @@ class AddCountryView(APIView):
         country_name = request.data.get('country_name')
         latitude_str = request.data.get('latitude')
         longitude_str = request.data.get('longitude')
-        country_type = request.data.get('country_type')  # Add this line to get the country type
+        country_type = request.data.get('country_type')
 
         if latitude_str is None or longitude_str is None or country_type is None:
             return Response("Latitude, Longitude, and Country Type are required.", status=status.HTTP_400_BAD_REQUEST)
@@ -229,5 +202,3 @@ class AddCountryView(APIView):
             traceback_str = traceback.format_exc()
             print(f"Error in AddCountryView: {e}\n{traceback_str}")
             return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-

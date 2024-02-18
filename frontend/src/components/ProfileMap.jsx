@@ -10,6 +10,7 @@ const ProfileMap = ({ username, countryType }) => {
   const [popupPosition, setPopupPosition] = useState(null);
   const mapRef = useRef();
 
+
   useEffect(() => {
     const fetchUserCountriesData = async () => {
       try {
@@ -19,7 +20,7 @@ const ProfileMap = ({ username, countryType }) => {
         console.error(`Error fetching ${countryType} countries:`, error);
       }
     };
-
+  
     fetchUserCountriesData();
   }, [username, countryType, selectedCountry]);
 
@@ -45,12 +46,12 @@ const fetchCountryData = async (latlng) => {
         const countryName = data.address && data.address.country ? data.address.country : "Unknown";
 
         // Adding country name to the response data
-        return { ...data, name: countryName, latitude: lat, longitude: lng }; // Include latitude and longitude
+        return { ...data, name: countryName, latitude: lat, longitude: lng };
     } catch (error) {
         console.error("Error fetching country data:", error);
         throw error;
     }
-};
+  };
 
   const handleMapClick = async (event) => {
     const { latlng } = event;
@@ -83,9 +84,9 @@ const fetchCountryData = async (latlng) => {
     } else {
         console.error("Invalid latitude or longitude.");
     }
-};
+  };
 
-const handleAddToInterested = async () => {
+  const handleAddToInterested = async () => {
     if (selectedCountry && selectedCountry.latitude && selectedCountry.longitude) {
         try {
             await addToVisitedOrInterestedCountries(username, 'interested', selectedCountry.name, selectedCountry.latitude, selectedCountry.longitude);
@@ -95,11 +96,7 @@ const handleAddToInterested = async () => {
     } else {
         console.error("Invalid latitude or longitude.");
     }
-};
-
-
-
-
+  };
 
   return (
     <div>
@@ -111,15 +108,17 @@ const handleAddToInterested = async () => {
 
         <MapEvents />
 
-        {userCountries.map((country) => (
-          <Marker
-            key={country.name}
-            position={[country.latitude, country.longitude]}
-            onClick={() => handleMarkerClick(country)}
-          >
-            <Popup>{country.name}</Popup>
-          </Marker>
-        ))}
+        {userCountries.map((country) => {
+          return (
+            <Marker
+              key={country.name}
+              position={[country.latitude, country.longitude]}
+              onClick={() => handleMarkerClick(country)}
+            >
+              <Popup>{country.name}</Popup>
+            </Marker>
+          );
+        })}
 
         {popupPosition && selectedCountry && (
           <Popup position={popupPosition}>
