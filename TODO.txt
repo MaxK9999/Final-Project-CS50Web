@@ -172,3 +172,10 @@ Encountered new bug where visited countries work as expected, but interested cou
 18-02-2024:
 Fixed bug, both interested and visited get added correctly now, DO NOT EDIT addToCountryList!!!!
 Both interested and visited get fetched correctly and displayed in frontend now.
+
+26-02-2024:
+!!!!!!!!!!!!!!!!!!!!!!!  UPDATE  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Will probably have to take another short hiatus because of work and private life again.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
